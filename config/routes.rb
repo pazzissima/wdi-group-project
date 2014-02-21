@@ -5,3 +5,5 @@ WdiGroupProject::Application.routes.draw do
     resources :comments, except: [:index, :show]
   end
 end
+
+#this is kai's github test.
