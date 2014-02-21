@@ -8,6 +8,7 @@ class ClipsController < ApplicationController
   end
 
   def create
+    #create random string
   end
 
   def show
