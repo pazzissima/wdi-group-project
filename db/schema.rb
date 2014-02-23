@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140221202603) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clips", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140221202603) do
     t.datetime "updated_at"
   end
 
-  add_index "clips", ["user_id"], name: "index_clips_on_user_id"
+  add_index "clips", ["user_id"], name: "index_clips_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140221202603) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["clip_id"], name: "index_comments_on_clip_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["clip_id"], name: "index_comments_on_clip_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
 end
