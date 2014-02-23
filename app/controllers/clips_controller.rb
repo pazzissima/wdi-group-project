@@ -1,7 +1,7 @@
 class ClipsController < ApplicationController
   def index
-    # all public clips
-    # OR random selection/popular clips
+    @clips = [{:title => "Song 1", :description => "great", :id => 1}, {:title => "Song 2", :description => "great", :id => 2}, {:title => "Song 3", :description => "great", :id => 3}]
+
   end
 
   def new
