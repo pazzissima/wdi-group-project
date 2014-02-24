@@ -8,7 +8,7 @@
 #  transcript  :text
 #  audio       :string(255)
 #  description :text
-#  private     :boolean
+#  is_private  :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
 #

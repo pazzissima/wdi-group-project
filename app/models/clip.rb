@@ -8,7 +8,7 @@
 #  transcript  :text
 #  audio       :string(255)
 #  description :text
-#  private     :boolean
+#  is_private  :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -20,6 +20,23 @@ class Clip < ActiveRecord::Base
   accepts_nested_attributes_for :comments
 
   searchable do
+    text :title, :transcript, :description
 
+    text :comments do
+      comments.map { |comment| comment.body }
+    end
+
+    text :tags do
+      tags.map { |tag| tag.text }
+    end
+
+    integer :user_id
+    boolean :is_private
+    # datetime :created_at
+    # datetime :updated_at
+
+    string :sort_title do
+      title.downcase.gsub(/^(an?|the)/, '')
+    end
   end
 end
