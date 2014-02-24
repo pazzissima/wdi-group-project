@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # user/session authentication
 gem 'devise'
 
+# for search. More: https://github.com/sunspot/sunspot
+gem 'sunspot_rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -50,6 +53,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
+  gem 'sunspot_solr'
 end
 
 # Use ActiveModel has_secure_password
@@ -63,3 +67,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'rails_12factor', group: :production
+
+ruby "2.0.0"
