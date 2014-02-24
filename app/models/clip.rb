@@ -16,5 +16,10 @@
 class Clip < ActiveRecord::Base
   belongs_to :user
   has_many :comments
+  has_many :tags
   accepts_nested_attributes_for :comments
+
+  searchable do
+
+  end
 end
