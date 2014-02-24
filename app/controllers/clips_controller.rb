@@ -11,6 +11,7 @@ class ClipsController < ApplicationController
   end
 
   def show
+    @clip = Clip.find(params[:id])
   end
 
   def destroy
