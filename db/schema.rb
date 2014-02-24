@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224181723) do
+ActiveRecord::Schema.define(version: 20140224225451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20140224181723) do
     t.boolean  "private"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
   end
 
   add_index "clips", ["user_id"], name: "index_clips_on_user_id", using: :btree
