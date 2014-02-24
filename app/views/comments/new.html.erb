@@ -1,2 +1,8 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<h3>Enter your comment here</h3>
+
+<%= form_for @comment, url: clip_comments_path do |c| %>
+    <%= c.label "Your comment" %>
+    <%= c.text_field :body %>
+
+    <%= c.submit %>
+<% end %>
