@@ -1,2 +1,11 @@
-<h1>Clips#new</h1>
-<p>Find me in app/views/clips/new.html.erb</p>
+<div class="form">
+    <%= form_for @clip do |f| %>
+    <div class="mp3">
+      <%= f.label :mp3 %>
+      <%= f.file_field :mp3 %>
+    </div>
+    <div class="submit">
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </div>

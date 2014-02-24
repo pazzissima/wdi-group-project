@@ -10,8 +10,18 @@ class User < ActiveRecord::Base
     :convert_options => {
       :thumb => "-gravity Center -crop 50x50+0+0",
       :thumb => "-gravity Center -crop 100x100+0+0",
-    }
-  }
+    },
+    :storage => :s3,
+    :s3_credentials => {
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  },
+    :s3_host_name => 's3-us-west-2.amazonaws.com',
+    :url => "/system/:hash.:extension",
+    :hash_secret => ENV['IMG_KEY']
+}
+
    # Validate content type
   validates_attachment_content_type :avatar, :content_type => /\Aimage/
   # Validate filename
