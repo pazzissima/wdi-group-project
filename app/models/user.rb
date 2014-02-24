@@ -24,6 +24,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :clips
+  has_many :comments
+
   has_attached_file :avatar, {
     :styles => {
       :thumb => ["50x50#", :png],
