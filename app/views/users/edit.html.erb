@@ -1,0 +1,11 @@
+<div class="form">
+    <%= form_for @user do |f| %>
+    <div class="avatar">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+    <div class="submit">
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </div>
