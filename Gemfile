@@ -51,7 +51,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   gem 'sunspot_solr'
 end
