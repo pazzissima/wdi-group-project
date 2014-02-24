@@ -1,4 +1,5 @@
 WdiGroupProject::Application.routes.draw do
+  devise_for :users
   root to: "clips#index"
 
   resources :clips, except: [:edit, :update] do
