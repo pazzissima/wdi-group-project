@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  def index
+    @comments = Clip.find(params[:clip_id]).comments
+  end
+
   def new
     @comment = Comment.new
   end
@@ -10,6 +14,10 @@ class CommentsController < ApplicationController
     comment.clip = Clip.find(clip_id)
     comment.save
     redirect_to clip_comments_path
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
   end
 
   def edit

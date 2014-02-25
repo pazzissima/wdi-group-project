@@ -6,11 +6,10 @@
 <body>
 <div class="show">
 <h2><%= @clip.title %></h2>
-<%= @clip.mp3.url %>
 
-By: <%= @clip.performer %>
+By: <%= @clip.performer %><br>
+Tags: <%= @tags %> <br>
 
-  <input id="upload" type="file"/></br>
   <audio id="ott" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
     <!-- <source src="horse.ogg" type="audio/ogg"> -->
     <!-- <source src="Ott Mix pt 1.mp3" type="audio/mpeg"> -->

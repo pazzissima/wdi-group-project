@@ -1,8 +1,6 @@
-c = Clip.create!(:title => "Song #1",
-  :performer => "Madonna", :description => "a very good song")
+c = Clip.create!(:title => "Song #1", :performer => "Madonna", :description => "a very good song")
 
-c2 = Clip.create!(:title => "Song #2",
-  :performer => "Jay Z", :description => "an awesome song")
+c2 = Clip.create!(:title => "Song #2", :performer => "Jay Z", :description => "an awesome song")
 
 kai = User.create(email: "kaifius@github.com", password: "password", password_confirmation: "password")
 
