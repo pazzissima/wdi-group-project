@@ -14,8 +14,12 @@
     <%= f.text_field :performer %><br>
 
     <%= f.label "Description" %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description %><br>
 
+    <%= fields_for :tags do |tagform| %>
+        <%= tagform.label "Tags (comma separated)" %>
+        <%= tagform.text_field :text %>
+    <% end %>
     <%= f.submit %>
 <% end %>
 </div>
