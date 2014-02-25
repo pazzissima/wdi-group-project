@@ -27,7 +27,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuil`r
 gem 'jbuilder', '~> 1.2'
 
 # user/session authentication
@@ -70,8 +70,10 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# heroku
 gem 'rails_12factor', group: :production
 
 gem 'unicorn'
 
 ruby "2.0.0"
+# /heroku

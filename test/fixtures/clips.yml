@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: clips
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  user_id     :integer
+#  transcript  :text
+#  audio       :string(255)
+#  description :text
+#  is_private  :boolean
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
