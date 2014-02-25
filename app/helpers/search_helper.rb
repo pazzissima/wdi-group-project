@@ -1,24 +1,18 @@
 module SearchHelper
 
-  def search_by_title(search_string)
+  def search_by_clip_field(search_string, field_symbol)
     search = Clip.search do
       fulltext(search_string) do
-        fields(:title)
+        fields(field_symbol)
       end
     end
 
     search.results
   end
 
-  def search_by_content(search_string)
-    search = Clip.search do
-      fulltext(search_string) do
-        fields(:transcript)
-      end
-    end
+  def search_by_tags(search_string)
+    search = Tag.search { fulltext(search_string) }
     search.results
   end
-
-
 
 end
