@@ -9,14 +9,22 @@ class ClipsController < ApplicationController
   end
 
   def create
-    @clip = Clip.create(params.require(:clip).permit(:mp3, :title, :performer, :description))
-    redirect_to clip_path(@clip)
+    clip = Clip.create(params.require(:clip).permit(:mp3, :title, :performer, :description))
+    tag_string = params.require(:tags).permit(:text)[:text]
+    tag_array = tag_string.split(", ")
+
+    tag_array.each do |tag|
+      clip.tags.create(text: tag)
+    end
+    redirect_to clip_path(clip)
   end
 
   def show
     @clip = Clip.find(params[:id])
 
     @clip_comments = @clip.comments
+
+    @tags = @clip.display_tags
   end
 
   def destroy

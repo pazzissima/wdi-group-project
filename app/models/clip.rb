@@ -55,4 +55,12 @@ class Clip < ActiveRecord::Base
       title.downcase.gsub(/^(an?|the)/, '')
     end
   end
+
+  def display_tags
+    tags = []
+    self.tags.each do |t|
+      tags << t.text
+    end
+    tags.join(", ")
+  end
 end
