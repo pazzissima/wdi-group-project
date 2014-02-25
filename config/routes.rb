@@ -4,7 +4,7 @@ WdiGroupProject::Application.routes.draw do
   root to: "clips#index"
 
   resources :clips, except: [:edit, :update] do
-    resources :comments, except: [:index, :show]
+    resources :comments#, except: [:index, :show]
   end
 
   get '/search', to: 'search#new', as: "new_search"
