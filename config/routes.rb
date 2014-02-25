@@ -10,6 +10,3 @@ WdiGroupProject::Application.routes.draw do
   get '/search', to: 'search#new', as: "new_search"
   post '/search', to: 'search#create'
 end
-
-
-end
