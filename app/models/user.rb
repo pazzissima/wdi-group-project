@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :clips
   has_many :comments
+  has_many :likes
 
   has_attached_file :avatar, {
     :styles => {

@@ -1,4 +1,6 @@
 <% @clips.each do |clip| %> 
-
-  <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %></li>
+  <div id="clip<%= clip.id %>" >
+  <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %>
+  </li>
+</div>
 <% end %>
