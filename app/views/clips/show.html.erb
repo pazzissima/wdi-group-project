@@ -1,2 +1,79 @@
-<h1>Clips#show</h1>
-<p>Find me in app/views/clips/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="General_Assembly/Resources/jQuery/jQuery.min.js"></script>
+</head>
+<body>
+<div class="show">
+<h2><%= @clip.title %></h2>
+
+By: <%= @clip.performer %><br>
+Tags: <%= @tags %> <br>
+
+  <audio id="ott" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
+    <!-- <source src="horse.ogg" type="audio/ogg"> -->
+    <!-- <source src="Ott Mix pt 1.mp3" type="audio/mpeg"> -->
+  <p>Your browser does not support the audio element.</p>
+  </audio>
+  </br>
+  </br></br>
+  <input type="text" id="min" value="0">Minutes</input></br>
+  <input type="text" id="sec" value="0">Seconds</input></br>
+  <input type="text" id="duration" value="0">Duration (seconds)</input></br>
+  <button id="play">Play</button>
+  <input type="reset" id="reset"/>
+  <button id="log">Test</button>
+  <script>
+    $(document).ready(function(){
+
+      var startTime, endTime;
+
+      function playSegment(start,end) {
+        startTime = start, endTime = end;
+        $("#ott")[0].currentTime = start;
+        $("#ott")[0].play();
+      }
+
+      $("#play").on('click', function(event){
+        event.preventDefault();
+        $("#ott")[0].pause();
+        var duration = parseInt($("#duration").val());
+        var min, sec;
+          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val()) * 60;};
+          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val());    };
+          if (parseInt($("#duration").val()) > 0) {}
+        playSegment(min+sec, duration);
+      });
+
+      $("#ott")[0].addEventListener('timeupdate', function(){
+        if (endTime && $("#ott")[0].currentTime >= (startTime + endTime)) {
+          $("#ott")[0].pause();
+        }
+      })
+
+      $("#reset").on('click',function(event){
+        event.preventDefault();
+        $("#min").val("0");
+        $("#sec").val("0");
+        $("#duration").val("0");
+      });
+
+      $("#log").on('click', function(event) {event.preventDefault; console.log($("#ott")[0].currentTime);});
+
+    })
+  </script>
+
+<%if @clip_comments %>
+  <h4>Comments: </h4>
+
+  <% @clip_comments.each do |comment| %>
+
+    <li><%= comment.body %></li>
+
+  <% end %>
+<% end %>
+
+  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
+</body>
+</html>
+</div>

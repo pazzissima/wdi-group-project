@@ -1,2 +1,25 @@
-<h1>Clips#new</h1>
-<p>Find me in app/views/clips/new.html.erb</p>
+<div class="new">
+<h2>Upload your clip here!</h2>
+
+<%= form_for @clip do |f| %>
+
+  <div class="mp3">
+    <%= f.label "mp3" %>
+    <%= f.file_field :mp3 %><br>
+  </div>
+    <%= f.label "Title" %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label "Performer" %>
+    <%= f.text_field :performer %><br>
+
+    <%= f.label "Description" %>
+    <%= f.text_field :description %><br>
+
+    <%= fields_for :tags do |tagform| %>
+        <%= tagform.label "Tags (comma separated)" %>
+        <%= tagform.text_field :text %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+</div>

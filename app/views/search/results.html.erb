@@ -1,0 +1,40 @@
+<%= render "search" %>
+
+<%unless @title_results == [] %>
+  <div class="search_block">
+    <h2>matches title:</h2>
+    <% @title_results.each do |r| %>
+      <div class="search_result">
+        <h3><%= link_to r.title, clip_path(r) %></h3>
+        <%= r.display_tags %><br>
+        <audio id="ott" controls src="<%=r.mp3.url%>">
+      </div>
+    <% end %>
+  </div>
+<%end%>
+
+<%unless @content_results == [] %>
+  <div class="search_block">
+    <h2>matches content:</h2>
+    <% @content_results.each do |r| %>
+      <div class="search_result">
+        <h3><%= link_to r.title, clip_path(r) %></h3>
+        <%= r.display_tags %><br>
+        <audio id="ott" controls src="<%=r.mp3.url%>">
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% unless @tag_results == [] %>
+  <div class="search_block">
+    <h2>matches tags:</h2>
+    <% @tag_results.each do |r| %>
+      <div class="search_result">
+        <h3><%= link_to r.title, clip_path(r) %></h3>
+        <%= r.display_tags %><br>
+        <audio id="ott" controls src="<%=r.mp3.url%>">
+      </div>
+    <% end %>
+  </div>
+<% end %>

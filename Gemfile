@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
+gem "paperclip", "~> 4.1"
+gem 'aws-sdk'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -24,11 +27,14 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuil`r
 gem 'jbuilder', '~> 1.2'
 
 # user/session authentication
 gem 'devise'
+
+# for search. More: https://github.com/sunspot/sunspot
+gem 'sunspot_rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -48,8 +54,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
+  gem 'sunspot_solr'
 end
 
 # Use ActiveModel has_secure_password
@@ -64,4 +70,12 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'speech2text'
+
+# heroku
+gem 'rails_12factor', group: :production
+
+gem 'unicorn'
+
+ruby "2.0.0"
+# /heroku
+
