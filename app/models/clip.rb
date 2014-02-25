@@ -17,7 +17,9 @@ class Clip < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_many :tags
-  accepts_nested_attributes_for :comments
+  has_many :clip_playlists
+  has_many :playlists, through: :clip_playlists
+  accepts_nested_attributes_for :comments, :playlists
 
   has_attached_file :mp3, {
     :storage => :s3,

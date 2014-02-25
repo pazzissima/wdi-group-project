@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224225451) do
+ActiveRecord::Schema.define(version: 20140225224919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clip_playlists", force: true do |t|
+    t.integer  "clip_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clip_playlists", ["clip_id"], name: "index_clip_playlists_on_clip_id", using: :btree
+  add_index "clip_playlists", ["playlist_id"], name: "index_clip_playlists_on_playlist_id", using: :btree
 
   create_table "clips", force: true do |t|
     t.string   "title"
@@ -34,6 +44,11 @@ ActiveRecord::Schema.define(version: 20140224225451) do
 
   add_index "clips", ["user_id"], name: "index_clips_on_user_id", using: :btree
 
+  create_table "clips_playlists", id: false, force: true do |t|
+    t.integer "clip_id",     null: false
+    t.integer "playlist_id", null: false
+  end
+
   create_table "comments", force: true do |t|
     t.text     "body"
     t.integer  "clip_id"
@@ -44,6 +59,15 @@ ActiveRecord::Schema.define(version: 20140224225451) do
 
   add_index "comments", ["clip_id"], name: "index_comments_on_clip_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "playlists", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.integer  "clip_id"
