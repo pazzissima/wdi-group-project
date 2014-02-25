@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20140224225451) do
     t.text     "transcript"
     t.string   "audio"
     t.text     "description"
-    t.boolean  "private"
+    t.boolean  "is_private"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "performer"
     t.string   "mp3_file_name"
     t.string   "mp3_content_type"
     t.integer  "mp3_file_size"
@@ -43,6 +44,15 @@ ActiveRecord::Schema.define(version: 20140224225451) do
 
   add_index "comments", ["clip_id"], name: "index_comments_on_clip_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.integer  "clip_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["clip_id"], name: "index_tags_on_clip_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

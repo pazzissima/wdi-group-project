@@ -15,4 +15,6 @@ class Clip < ActiveRecord::Base
   validates_attachment_size :mp3, :less_than => 4.megabytes
   validates_attachment_content_type :mp3, :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3' ],
             :message => 'Please select a .mp3 file'
+
+  has_many :comments
 end

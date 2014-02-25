@@ -1,1 +1,4 @@
-<h1>Clips#index</h1>
+<% @clips.each do |clip| %> 
+
+  <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %></li>
+<% end %>
