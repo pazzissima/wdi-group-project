@@ -16,6 +16,8 @@ WdiGroupProject::Application.routes.draw do
 
   post '/', to: 'search#create'
 
+  post '/clips/:id/snippet', to: 'clips#snippet'
+
   resources :playlists
 
 

@@ -5,6 +5,8 @@ class Clip < ActiveRecord::Base
   has_many :clip_playlists
   has_many :playlists, through: :clip_playlists
   has_many :likes
+  belongs_to :snippable, :polymorphic => true
+  has_many :clips, :as => :snippable
   accepts_nested_attributes_for :comments, :playlists
 
   has_attached_file :mp3, {

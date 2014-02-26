@@ -15,7 +15,13 @@ class ClipsController < ApplicationController
     @clip = Clip.new()
   end
 
-  def record
+  def snippet
+    clip = Clip.find(id = params[:id])
+    @snippet = Clip.create(title: clip.title, description: clip.description, performer: clip.performer, mp3: clip.mp3)
+    clip.clips << @snippet
+    @snippet.tags = clip.tags
+    @startTime = (params[:snippet][:start_min].to_i * 60) + (params[:snippet][:start_sec].to_i)
+    @duration = params[:snippet][:duration]
   end
 
   def create
