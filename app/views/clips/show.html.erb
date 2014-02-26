@@ -15,11 +15,9 @@ Tags: <%= @tags %> <br>
   </button>
   <ul class="dropdown-menu" role="menu">
       <% @clip.user.playlists.each do |p| %>
+
         <li>
-          <%=form_for p do |f| %>
-            <% f.hidden :playlist_id = p.id %>
             <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
-          <% end %>
         <li>
       <% end %>
       <li> new playlist </li>
