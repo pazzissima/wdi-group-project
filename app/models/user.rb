@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :clips
   has_many :comments
   has_many :playlists
+  has_many :likes
 
   has_attached_file :avatar, {
     :styles => {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225224919) do
+ActiveRecord::Schema.define(version: 20140226021543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140225224919) do
     t.string   "mp3_content_type"
     t.integer  "mp3_file_size"
     t.datetime "mp3_updated_at"
+    t.float    "score",            default: 0.0
   end
 
   add_index "clips", ["user_id"], name: "index_clips_on_user_id", using: :btree
@@ -55,14 +56,23 @@ ActiveRecord::Schema.define(version: 20140225224919) do
   add_index "comments", ["clip_id"], name: "index_comments_on_clip_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+
   create_table "playlists", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "clip_id"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
+
+  add_index "likes", ["clip_id"], name: "index_likes_on_clip_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.integer  "clip_id"

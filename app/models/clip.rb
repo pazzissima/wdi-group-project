@@ -19,6 +19,7 @@ class Clip < ActiveRecord::Base
   has_many :tags
   has_many :clip_playlists
   has_many :playlists, through: :clip_playlists
+  has_many :likes
   accepts_nested_attributes_for :comments, :playlists
 
   has_attached_file :mp3, {
