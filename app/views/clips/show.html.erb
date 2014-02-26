@@ -10,18 +10,22 @@
 By: <%= @clip.performer %><br>
 Tags: <%= @tags %> <br>
 <div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    + <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-      <% @clip.user.playlists.each do |p| %>
+  <% unless current_user == nil %>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      + <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <% unless @clip.user.playlists == [] %>
+        <% @clip.user.playlists.each do |p| %>
 
-        <li>
-            <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
-        <li>
+          <li>
+              <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
+          <li>
+        <% end %>
       <% end %>
-      <li> new playlist </li>
-  </ul>
+        <li> new playlist </li>
+    </ul>
+  <% end %>
 </div>
 
   <div>
