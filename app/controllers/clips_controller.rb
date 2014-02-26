@@ -71,6 +71,18 @@ class ClipsController < ApplicationController
     clip.update_column(:score, score)
   end
 
+  def add_playlist
+    @clip = Clip.find(params[:id])
+    if current_user.playlists == []
+      new_playlist = Playlist.create(title: "Favorites")
+      current_user.playlists << new_playlist
+      new_playlist.clips << @clip
+    end
+    respond_to do |f|
+      f.json { render :json => {clip: @clip, playlists: @clip.playlists}}
+    end
+  end
+
 
 
   def destroy

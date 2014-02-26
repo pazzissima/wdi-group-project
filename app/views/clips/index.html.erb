@@ -6,6 +6,7 @@
         <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>: <%= clip.description %> by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
         <div id="clip<%= clip.id %>" >
             <button class="like">Like</button><br>Likes: <p><%=clip.likes.count%></p>
+            <button class="playlist">Add To Playlist</button> Playlists: <p id="play"></p>
       </div>
       </ul>
     </div>
