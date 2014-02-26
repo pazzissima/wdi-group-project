@@ -45,7 +45,7 @@ li {
   width: 500px;
   border-radius: 5px;
 }
-.index:hover{
+.glyphicon:hover{
   background: #B8B8B8;
   cursor: pointer;
 }
