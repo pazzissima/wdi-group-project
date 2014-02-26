@@ -26,6 +26,17 @@ class ClipsController < ApplicationController
     @tags = @clip.display_tags
   end
 
+  def like_clicked
+    @clip = Clip.find(params[:id])
+    # unless Like.find_by(user_id: current_user.id, clip_id: @clip.id)
+      @clip.likes << Like.new(user_id: current_user.id)
+    # end
+    respond_to do |f|
+      # f.json { render :json => {count: @clip.likes.count}}
+      f.json { render :json => {clip: @clip, count: @clip.likes.count}}
+    end
+  end
+
   def destroy
   end
 
