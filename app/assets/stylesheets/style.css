@@ -1,6 +1,7 @@
 body:not(.navbar-header) {
 /*    padding-left: 20px;
     padding-right: 20px;*/
+    background-color: #C5EFF7;
 }
 
 li {
@@ -13,8 +14,76 @@ li {
 
 .new{
   padding-left: 20px;
+  width: 40%;
+  float: left;
+  text-align: right;
 }
 
 .navbar{
-  background-color: #EEE9E9;
+  background-color: #336699;
+  color: white;
 }
+
+.search_block{
+  border: 1px solid grey;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 10px auto;
+  padding: 10px;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.index{
+  border: 1px solid #B8B8B8;
+  background-color: #E8E8E8;
+  margin: 10px auto;
+  padding: 10px;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.home_page{
+/*  margin-top: 8%;*/
+}
+.add_button {
+  margin-top: 0;
+  margin-left: 3%;
+  background-color: hsl(215, 20%, 82%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2f4f6", endColorstr="#c7cfda");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#f2f4f6), to(#c7cfda));
+  background-image: -moz-linear-gradient(top, #f2f4f6, #c7cfda);
+  background-image: -ms-linear-gradient(top, #f2f4f6, #c7cfda);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f4f6), color-stop(100%, #c7cfda));
+  background-image: -webkit-linear-gradient(top, #f2f4f6, #c7cfda);
+  background-image: -o-linear-gradient(top, #f2f4f6, #c7cfda);
+  background-image: linear-gradient(#f2f4f6, #c7cfda);
+  border-color: #c7cfda #c7cfda hsl(215, 20%, 78.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.23);
+  -webkit-font-smoothing: antialiased;
+  border-radius: 5px;
+}
+
+a:hover{
+  color: #660033;
+}
+
+.search_form{
+  margin-top: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
