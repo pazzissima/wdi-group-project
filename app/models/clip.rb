@@ -18,11 +18,11 @@ class Clip < ActiveRecord::Base
     :url => "/system/:hash.:extension",
     :hash_secret => ENV['IMG_KEY']
 }
-  validates_attachment_size :mp3, :less_than => 4.megabytes
+  validates_attachment_size :mp3, :less_than => 5.megabytes
   validates_attachment_content_type :mp3, 
   :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3', 
     "audio/x-wav","audio/wav", 'application/wav', 'application/wav'],
-            :message => 'Please select a .mp3 file'
+            :message => 'Please select a .mp3 or wav file'
 
   searchable do
     text :title, :transcript, :description
