@@ -1,7 +1,7 @@
 <div class="show">
-<h2><%= @snippet.title %></h2>
+<h2><%= @clip.title %></h2>
 
-By: <%= @snippet.performer %><br>
+By: <%= @clip.performer %><br>
 Tags: <%= @tags %> <br>
 <div class="btn-group">
   <% unless current_user == nil %>
@@ -10,9 +10,9 @@ Tags: <%= @tags %> <br>
     </button>
     <ul class="dropdown-menu" role="menu">
 
-      <% unless @snippet.user == nil || @snippet.user.playlists == [] %>
+      <% unless @clip.user == nil || @clip.user.playlists == [] %>
 
-        <% @snippet.user.playlists.each do |p| %>
+        <% @clip.user.playlists.each do |p| %>
 
           <li>
               <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
@@ -25,24 +25,24 @@ Tags: <%= @tags %> <br>
 </div>
 
   <div>
-    <audio id="track" controls src="<%=@snippet.mp3.url%>" currentTime=<%=@startTime%> style="background-color: red; width: 60%">
+    <audio id="track" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
       <p>Your browser does not support the audio element.</p>
     </audio>
   </div>
   </br>
   </br></br>
 
-<%if @snippet_comments %>
+<%if @clip_comments %>
   <h4>Comments: </h4>
 
-  <% @snippet_comments.each do |comment| %>
+  <% @clip_comments.each do |comment| %>
 
     <li><%= comment.body %></li>
 
   <% end %>
 <% end %>
 
-  <br><a href="/clips/<%= @snippet.id %>/comments/new">Leave your comment</a>
+  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
 </body>
 </html>
 </div>
