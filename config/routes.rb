@@ -12,7 +12,7 @@ WdiGroupProject::Application.routes.draw do
   end
 
   get '/search', to: 'search#new', as: "new_search"
-  post '/search', to: 'search#create'
+  post '/', to: 'search#create'
 
   resources :playlists
 

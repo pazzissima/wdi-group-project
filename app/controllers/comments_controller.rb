@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Clip.find(params[:clip_id]).comments
+    @clip = Clip.find(params[:clip_id])
+    @comments = @clip.comments
   end
 
   def new

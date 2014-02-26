@@ -44,11 +44,6 @@ ActiveRecord::Schema.define(version: 20140225224919) do
 
   add_index "clips", ["user_id"], name: "index_clips_on_user_id", using: :btree
 
-  create_table "clips_playlists", id: false, force: true do |t|
-    t.integer "clip_id",     null: false
-    t.integer "playlist_id", null: false
-  end
-
   create_table "comments", force: true do |t|
     t.text     "body"
     t.integer  "clip_id"

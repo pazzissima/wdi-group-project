@@ -1,10 +1,10 @@
-<h3>See all comments for this song</h3>
+<h3>See all comments for <%= link_to @clip.title, clip_path(@clip) %></h3>
 
 <% @comments.each do |comment| %>
-<!-- <%= comment.clip.title %> -->
  <h4><li><%= comment.body %></li></h4>
 
 <% end %>
+
 
 
 
