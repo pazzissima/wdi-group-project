@@ -1,4 +1,35 @@
-<% @clips.each do |clip| %> 
+<div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </li>
+  </ul>
+  </div>
+<% @clips.each do |clip| %>
 
-  <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %></li>
+  <ul>
+    <li><%= link_to  clip[:title], clip_path(clip) %>: <%= clip[:description] %> by: <%= clip[:performer] %></li>
+    <li><audio id="ott" controls src="<%=clip.mp3.url%>"></audio>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </li>
+  </ul>
 <% end %>

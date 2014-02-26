@@ -43,7 +43,7 @@ yuletide = sofya.clips.create(
   is_private: "false")
 
 yuletide.tags.create([
-  {text: "gay"},
+  {text: "yuletide gay"},
   {text: "rando tag"},
   {text: "bromance"},
   {text: "hats"}

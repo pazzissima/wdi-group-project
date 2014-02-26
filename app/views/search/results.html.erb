@@ -7,7 +7,17 @@
       <div class="search_result">
         <h3><%= link_to r.title, clip_path(r) %></h3>
         <%= r.display_tags %><br>
-        <audio id="ott" controls src="<%=r.mp3.url%>">
+        <audio id="ott" controls src="<%=r.mp3.url%>"><br>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          + <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <% current_user.playlists.each do |p| %>
+          <%= link_to p.title, playlist_path(p), method: :patch%>
+          <% end %>
+        </ul>
       </div>
     <% end %>
   </div>
