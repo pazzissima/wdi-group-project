@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: clips
-#
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  user_id     :integer
-#  transcript  :text
-#  audio       :string(255)
-#  description :text
-#  is_private  :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
-#
-
 class Clip < ActiveRecord::Base
   belongs_to :user
   has_many :comments
@@ -36,7 +21,6 @@ class Clip < ActiveRecord::Base
   validates_attachment_size :mp3, :less_than => 4.megabytes
   validates_attachment_content_type :mp3, :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3' ],
             :message => 'Please select a .mp3 file'
-
 
   searchable do
     text :title, :transcript, :description

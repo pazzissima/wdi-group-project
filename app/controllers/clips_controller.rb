@@ -1,4 +1,5 @@
 class ClipsController < ApplicationController
+  require 'open-uri'
   def index
     # @clips = [{:title => "Song 1", :description => "great song", :id => 1, :performer => "Madonna"}, {:title => "Song 2", :description => "awesome song", :id => 2, :performer => "Beyonce"}, {:title => "Song 3", :description => "great song", :id => 3, :performer => "Jay Z"}]
     @clips = Clip.all
@@ -20,6 +21,10 @@ class ClipsController < ApplicationController
     tag_array.each do |tag|
       clip.tags.create(text: tag)
     end
+    ip_address = open('http://whatismyip.akamai.com').read
+    cords = Geocoder.coordinates(ip_address)
+    clip.update_attributes({ip_address: ip_address, latitude: cords[0], longitude: cords[1]})
+
     redirect_to clip_path(clip)
   end
 
