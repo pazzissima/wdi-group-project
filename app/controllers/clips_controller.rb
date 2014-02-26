@@ -2,6 +2,10 @@ class ClipsController < ApplicationController
   def index
     # @clips = [{:title => "Song 1", :description => "great song", :id => 1, :performer => "Madonna"}, {:title => "Song 2", :description => "awesome song", :id => 2, :performer => "Beyonce"}, {:title => "Song 3", :description => "great song", :id => 3, :performer => "Jay Z"}]
     @clips = Clip.all
+    for c in @clips
+      update_score c
+    end
+    @clip_display = Clip.limit(20).order('score DESC')
   end
 
   def new
@@ -37,17 +41,16 @@ class ClipsController < ApplicationController
     end
   end
 
-  def update_score
-    clip = Clip.find(params[:id])
+  def update_score clip
     created_time = clip.created_at
-    hours_since = (created_time - Time.now())/3600
-    if hours_since < 50 
+    hours_since = (Time.now()-created_time)/3600
+    if hours_since < 100 
       likes = clip.likes.count
       score = (likes**0.8)/((hours_since+2)**1.8)
     else 
       score = 0
     end
-
+    clip.update_column(:score, score)
   end
 
 
