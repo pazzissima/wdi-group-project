@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :clips
   has_many :comments
   has_many :playlists
+  has_many :likes
 
   has_attached_file :avatar, {
     :styles => {
@@ -56,5 +57,10 @@ class User < ActiveRecord::Base
 
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
 end
+
+
+
+

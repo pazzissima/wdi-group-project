@@ -1,10 +1,10 @@
-<div class="home_page">
-  <button class="add_button"><a href="/clips/new">Add a new clip</a></button>
-  <% @clips.each do |clip| %>
 
-    <ul>
-      <div class="index"><%=link_to clip.title, clip_path(clip) %> <%= clip[:description] %> by: <%= clip[:performer] %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio></ul>
-  <% end %>
-  </div>
+<% @clip_display.each do |clip| %>
+  <div id="clip<%= clip.id %>" >
+  <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %>
+    <br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio>
+  </li>
+
+  	<button class="like">Like</button>Likes: <p><%=clip.likes.count%></p>
 </div>
-
+<% end %>

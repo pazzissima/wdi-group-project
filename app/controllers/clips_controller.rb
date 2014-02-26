@@ -1,8 +1,15 @@
 class ClipsController < ApplicationController
+
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+  require 'open-uri'
+
   def index
-    # @clips = [{:title => "Song 1", :description => "great song", :id => 1, :performer => "Madonna"}, {:title => "Song 2", :description => "awesome song", :id => 2, :performer => "Beyonce"}, {:title => "Song 3", :description => "great song", :id => 3, :performer => "Jay Z"}]
     @clips = Clip.all
+    for c in @clips
+      update_score c
+    end
+    @clip_display = Clip.limit(20).order('score DESC')
   end
 
   def new
@@ -17,6 +24,10 @@ class ClipsController < ApplicationController
     tag_array.each do |tag|
       clip.tags.create(text: tag)
     end
+    ip_address = open('http://whatismyip.akamai.com').read
+    cords = Geocoder.coordinates(ip_address)
+    clip.update_attributes({ip_address: ip_address, latitude: cords[0], longitude: cords[1]})
+
     redirect_to clip_path(clip)
   end
 
@@ -32,6 +43,33 @@ class ClipsController < ApplicationController
 
     @tags = @clip.display_tags
   end
+
+  def like_clicked
+    @clip = Clip.find(params[:id])
+    if user_signed_in?
+      unless Like.find_by(user_id: current_user.id, clip_id: @clip.id)
+        @clip.likes << Like.new(user_id: current_user.id)
+      end
+    end
+    respond_to do |f|
+      # f.json { render :json => {count: @clip.likes.count}}
+      f.json { render :json => {clip: @clip, count: @clip.likes.count}}
+    end
+  end
+
+  def update_score clip
+    created_time = clip.created_at
+    hours_since = (Time.now()-created_time)/3600
+    if hours_since < 100 
+      likes = clip.likes.count
+      score = (likes**0.8)/((hours_since+2)**1.8)
+    else 
+      score = 0
+    end
+    clip.update_column(:score, score)
+  end
+
+
 
   def destroy
   end
