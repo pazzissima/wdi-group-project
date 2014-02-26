@@ -15,6 +15,9 @@ class ClipsController < ApplicationController
     @clip = Clip.new()
   end
 
+  def record
+  end
+
   def create
     clip = current_user.clips.create(params.require(:clip).permit(:mp3, :title, :performer, :description))
     tag_string = params.require(:tags).permit(:text)[:text]

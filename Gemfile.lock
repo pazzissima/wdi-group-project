@@ -64,6 +64,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.3.6)
+    curb (0.8.5)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -209,6 +210,9 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     slop (3.4.7)
+    speech2text (0.3.6)
+      curb
+      json
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)

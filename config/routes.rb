@@ -13,8 +13,10 @@ WdiGroupProject::Application.routes.draw do
   post '/clips/update/:id', to: 'clips#like_clicked'
 
   get '/search', to: 'search#new', as: "new_search"
+
   post '/', to: 'search#create'
 
   resources :playlists
+
 
 end
