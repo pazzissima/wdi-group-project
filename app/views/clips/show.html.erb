@@ -15,7 +15,7 @@ Tags: <%= @tags %> <br>
       + <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <% unless @clip.user.playlists == [] %>
+      <% @clip.user == nil || unless @clip.user.playlists == [] %>
         <% @clip.user.playlists.each do |p| %>
 
           <li>
