@@ -1,7 +1,6 @@
 class ClipsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
   require 'open-uri'
 
   def index
@@ -14,6 +13,9 @@ class ClipsController < ApplicationController
 
   def new
     @clip = Clip.new()
+  end
+
+  def record
   end
 
   def create
@@ -67,6 +69,18 @@ class ClipsController < ApplicationController
       score = 0
     end
     clip.update_column(:score, score)
+  end
+
+  def add_playlist
+    @clip = Clip.find(params[:id])
+    if current_user.playlists == []
+      new_playlist = Playlist.create(title: "Favorites")
+      current_user.playlists << new_playlist
+      new_playlist.clips << @clip
+    end
+    respond_to do |f|
+      f.json { render :json => {clip: @clip, playlists: @clip.playlists}}
+    end
   end
 
 

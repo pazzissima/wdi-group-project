@@ -1,3 +1,4 @@
+
 <div class="home_page">
   <button class="add_button"><a href="/clips/new">Add a new clip</a></button>
   <% @clip_display.each do |clip| %>
@@ -6,9 +7,11 @@
         <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
         <div id="clip<%= clip.id %>" >
             <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count%></span>
+            <button class="playlist">Add To Playlist</button> Playlists: <p id="play"></p>
 
       </div>
       </ul>
     </div>
   <% end %>
 </div>
+

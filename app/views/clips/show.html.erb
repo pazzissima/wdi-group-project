@@ -12,18 +12,16 @@ Tags: <%= @tags %> <br>
 <div class="btn-group">
   <% unless current_user == nil %>
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      + <span class="caret"></span>
+      Select Playlist To Add <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <% @clip.user == nil || unless @clip.user.playlists == [] %>
-        <% @clip.user.playlists.each do |p| %>
-
-          <li>
-              <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
+      <% unless current_user.playlists == nil %>
+        <% current_user.playlists.each do |p| %>
+          <li id="playlist"+<%= p.id %> class="playlist">
+              <%=link_to p.title %>
           <li>
         <% end %>
       <% end %>
-        <li> new playlist </li>
     </ul>
   <% end %>
 </div>
