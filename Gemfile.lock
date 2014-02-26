@@ -276,10 +276,8 @@ DEPENDENCIES
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0)
   sdoc
-
   sunspot_rails
   sunspot_solr
-
   turbolinks
   uglifier (>= 1.3.0)
   unicorn

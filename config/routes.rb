@@ -9,5 +9,6 @@ WdiGroupProject::Application.routes.draw do
 
   get '/search', to: 'search#new', as: "new_search"
   post '/search', to: 'search#create'
+  get '/record', to: 'clips#record'
 
 end
