@@ -9,12 +9,30 @@
 
 By: <%= @clip.performer %><br>
 Tags: <%= @tags %> <br>
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    + <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <% @clip.user.playlists.each do |p| %>
+        <li>
+          <%=form_for p do |f| %>
+            <% f.hidden :playlist_id = p.id %>
+            <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
+          <% end %>
+        <li>
+      <% end %>
+      <li> new playlist </li>
+  </ul>
+</div>
 
-  <audio id="ott" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
+  <div>
+    <audio id="ott" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
     <!-- <source src="horse.ogg" type="audio/ogg"> -->
     <!-- <source src="Ott Mix pt 1.mp3" type="audio/mpeg"> -->
-  <p>Your browser does not support the audio element.</p>
-  </audio>
+      <p>Your browser does not support the audio element.</p>
+    </audio>
+  </div>
   </br>
   </br></br>
   <input type="text" id="min" value="0">Minutes</input></br>
