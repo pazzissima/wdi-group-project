@@ -1,6 +1,7 @@
 body:not(.navbar-header) {
     /*background-color: #C5EFF7;*/
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     color:black;
    /* background-image: url('http://lisaewing.com/wp-content/uploads/2011/06/The-Blues.jpg')*/
    background-image: url('http://www.wallpaper77.com/upload/DesktopWallpapers/cache/Sound-Vector-abstract-wallpapers-vector-wallpaper-vectors-1920x1200.jpg')
@@ -84,7 +85,13 @@ a:hover{
   margin-top: 12px;
 }
 
+span.glyphicon-thumbs-up{
+  font-size: 20px;
+}
 
+span.count{
+  font-size: 12px;
+}
 
 
 

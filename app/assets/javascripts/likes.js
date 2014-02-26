@@ -6,10 +6,10 @@ Likes = {
 		//grabs total likes and updates likes by 1
 		var count = response.count;
 		var id = response.clip.id;
-		$("#clip"+id+" > p").empty().append(count);
+		$("#clip"+id+" > .count").empty().append(count);
 	}
 };
-	
+
 $(".like").on('click', function(event){
 	event.preventDefault();
 	// this === the button that was clicked
