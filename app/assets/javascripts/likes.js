@@ -6,7 +6,7 @@ Likes = {
 		//grabs total likes and updates likes by 1
 		var count = response.count;
 		var id = response.clip.id;
-		$("#clip"+id+" > p").append(count);
+		$("#clip"+id+" > p").empty().append(count);
 	}
 };
 	

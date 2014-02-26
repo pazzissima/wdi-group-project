@@ -3,7 +3,6 @@
   <li><a href="/clips/<%= clip[:id] %>"><%= clip[:title] %>:</a> <%= clip[:description] %> by: <%= clip[:performer] %>
   </li>
 
-  	<button class="like">Like</button>Likes: <%= clip.likes.count %>
-	<p></p>
+  	<button class="like">Like</button>Likes: <p><%=clip.likes.count%></p>
 </div>
 <% end %>

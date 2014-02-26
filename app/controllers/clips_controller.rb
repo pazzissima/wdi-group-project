@@ -28,14 +28,29 @@ class ClipsController < ApplicationController
 
   def like_clicked
     @clip = Clip.find(params[:id])
-    # unless Like.find_by(user_id: current_user.id, clip_id: @clip.id)
+    unless Like.find_by(user_id: current_user.id, clip_id: @clip.id)
       @clip.likes << Like.new(user_id: current_user.id)
-    # end
+    end
     respond_to do |f|
       # f.json { render :json => {count: @clip.likes.count}}
       f.json { render :json => {clip: @clip, count: @clip.likes.count}}
     end
   end
+
+  def update_score
+    clip = Clip.find(params[:id])
+    created_time = clip.created_at
+    hours_since = (created_time - Time.now())/3600
+    if hours_since < 50 
+      likes = clip.likes.count
+      score = (likes**0.8)/((hours_since+2)**1.8)
+    else 
+      score = 0
+    end
+
+  end
+
+
 
   def destroy
   end
