@@ -1,0 +1,16 @@
+<div class="index">
+  <h2>Snippets for <%= @clip.title %></h2>
+</div>
+
+<% @clip.clips.each do |snippet| %>
+  <div class="index_snippet hoverable">
+    Title: <%= snippet.title %></br>
+    By: <%= snippet.performer %></br>
+    Description: <%= snippet.description %></br>
+    Tags:
+      <% snippet.tags.each do |tag| %>
+        <%= tag.text%>, 
+      <% end %></br>
+    User: <a href="<%=user_path(User.find(Clip.find(snippet.snippable_id).user_id))%>"><%= User.find(Clip.find(snippet.snippable_id).user_id).email %></a>
+  </div>
+<% end %>
