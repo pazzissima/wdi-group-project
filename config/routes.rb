@@ -14,8 +14,11 @@ WdiGroupProject::Application.routes.draw do
 
   get '/search', to: 'search#new', as: "new_search"
 
+
   post '/', to: 'search#create'
-
-
+  post '/users/:id', to: 'search#create'
+  post '/users/:id/edit', to: 'search#create'
+  post 'clips/:id', to: 'search#create'
+  post 'clips', to: 'search#create'
 
 end

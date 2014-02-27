@@ -1,3 +1,4 @@
+<div class = "index">
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +92,11 @@ Tags: <%= @tags %> <br>
   <% end %>
 <% end %>
 
-  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
+  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a><br>
+  <%= link_to "See all my clips", user_path(current_user) %><br>
+  <%= link_to "See all clips", root_path %>
+
 </body>
 </html>
+</div>
 </div>

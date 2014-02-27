@@ -1,10 +1,11 @@
+<div class ="index">
 <h3>See all comments for <%= link_to @clip.title, clip_path(@clip) %></h3>
 
 <% @comments.each do |comment| %>
  <h4><li><%= comment.body %></li></h4>
 
 <% end %>
-
+</div>
 
 
 
