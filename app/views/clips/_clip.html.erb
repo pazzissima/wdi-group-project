@@ -36,7 +36,7 @@ Tags: <%= @tags %> <br>
     <%= f.text_field :title %>
     <%= f.label :title %>
   </br>
-    <%= f.text_field :description %> 
+    <%= f.text_field :description %>
     <%= f.label :description %>
   </br></br>
     <%= f.text_field :minutes %>
@@ -87,18 +87,3 @@ Tags: <%= @tags %> <br>
 
     })
   </script>
-
-<%if @clip_comments %>
-  <h4>Comments: </h4>
-
-  <% @clip_comments.each do |comment| %>
-
-    <li><%= comment.body %></li>
-
-  <% end %>
-<% end %>
-
-  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
-</body>
-</html>
-</div>
