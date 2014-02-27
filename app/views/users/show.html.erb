@@ -9,7 +9,8 @@
 
 
 <% @user.clips.each do |clip| %>
-    <% if (current_user == @user) || (current_user != @user && clip.is_private? != true) %>
+    <!-- Only display if correct user is logged in or if clip is not private -->
+    <% if current_user == @user || clip.is_private? != true %>
       <ol>
         <% if clip.snippable_id.nil? %>
           <!-- |clip| media and information -->
