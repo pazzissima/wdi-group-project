@@ -22,6 +22,7 @@ class ClipsController < ApplicationController
     @clip = Clip.create(title: params[:snippet][:title], description: params[:snippet][:description], performer: parent_clip.performer, mp3: parent_clip.mp3, startTime: startTime, endTime: endTime)
     parent_clip.clips << @clip
     @clip.tags = parent_clip.tags
+    @clip.update_column(:user_id, current_user.id)
     redirect_to clip_path(@clip)
   end
 
@@ -50,6 +51,8 @@ class ClipsController < ApplicationController
     @clip = Clip.find(params[:id])
     @clip_comments = @clip.comments
     @tags = @clip.display_tags
+    @parent = Clip.find(@clip.snippable_id) if @clip.snippable_id
+    @comment = Comment.new
   end
 
   def like_clicked
@@ -101,7 +104,7 @@ class ClipsController < ApplicationController
       f.html
       f.json { render :json => @clips, only: [:title, :latitude, :longitude]}
     end
-    
+
   end
 
 

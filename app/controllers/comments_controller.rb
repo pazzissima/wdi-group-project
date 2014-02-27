@@ -11,10 +11,11 @@ class CommentsController < ApplicationController
   def create
     clip_id = params[:clip_id]
     comment_params = params.require(:comment).permit(:body)
+    comment_params[:user_id] = current_user.id
     comment = Comment.create(comment_params)
     comment.clip = Clip.find(clip_id)
     comment.save
-    redirect_to clip_comments_path
+    redirect_to clip_path(clip_id)
   end
 
   def show

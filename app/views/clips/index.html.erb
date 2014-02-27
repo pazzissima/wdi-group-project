@@ -1,15 +1,17 @@
+
+<center><h3>See All Clips</h3></center>
 <div class="home_page">
-    <% if signed_in? %>
-      <button class="add_button"><a href="/clips/new">Add a new clip</a></button>
-    <% end %>
 <% @clip_display.each do |clip| %>
       <ul>
-        <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>  </br>by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
-        <%= clip.description %>
+        <div class="index" ><h4><%= link_to clip.title, clip_path(clip) %></h4>
+        <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
         <div id="clip<%= clip.id %>" >
-            <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count%></span>
-            <button class="playlist">Add To Playlist</button> Playlists: <p id="play"></p>
-        </div>
-        </div>
+            <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count %></span>
+            <button class="playlist">Add To Playlist</button> Playlists: <p id="play"><%=clip.display_playlists%></p>
+
+      </div>
       </ul>
-<% end %>
+    </div>
+  <% end %>
+</div>
+

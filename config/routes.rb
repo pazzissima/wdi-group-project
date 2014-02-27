@@ -25,5 +25,6 @@ WdiGroupProject::Application.routes.draw do
   post '/users/:id/edit', to: 'search#create'
   post 'clips/:id', to: 'search#create'
   post 'clips', to: 'search#create'
+  post '/map', to: 'search#create'
 
 end

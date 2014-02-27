@@ -21,6 +21,10 @@ li {
   color:black;
 }
 
+.search_block.show {
+  text-align: center;
+}
+
 .new{
   padding-left: 20px;
   width: 40%;
@@ -43,6 +47,15 @@ li {
   padding: 10px;
   width: 500px;
   border-radius: 5px;
+}
+
+.comments{
+  list-style: none;
+  margin-left: -20px;
+}
+.comments li{
+  list-style: none;
+  margin-left: -40px;
 }
 
 .index{
@@ -151,11 +164,11 @@ span.count{
 #viv {
   text-align: left;
 }
-#record.recording { 
+#record.recording {
   background: red;
-  background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-  background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-  background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+  background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
+  background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
+  background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
 }
 #save, #save img { height: 10vh; }
 #save { opacity: 0.25;}

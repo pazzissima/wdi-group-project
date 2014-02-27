@@ -2,12 +2,17 @@
   <div class="avatar">
   <h2>Welcome!</h2>
   <%= image_tag @user.avatar.url(:medium) %><br>
-  <%= @user.email %>
+  <%= @user.email %><br>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>
   </div>
 </div></ul>
 <br>
 
+<ul><div class="index"><div id="add_clip">
+  <a href="/clips/new">Add a Clip</a></div>
+</div></ul>
 
+<center><ul><h3>My Clips:</h3></ul></center>
 <% @user.clips.each do |clip| %>
   <ol>
     <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>: <%= clip.description %> by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>

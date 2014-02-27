@@ -17,11 +17,13 @@
 <!--         <li class="active"><a href="#">Link</a></li>
         <li><a href="#">Link</a></li> -->
         <% if signed_in? %>
+        <a class="navbar-brand" href="/clips/new"><font color="white">Add a Clip</font></a>
+
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown"><font color="white">My Profile<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Profile Page", user_path(current_user) %></li>
-            <li><a href="#">Playlists</a></li>
+            <li><a href="/playlists">Playlists</a></li>
             <li><a href="#">Likes</a></li>
             <li class="divider"></li>
             <li><%= link_to "Edit Profile", edit_user_path(current_user) %></font></li>
@@ -30,6 +32,8 @@
         </li>
         <% end %>
       </ul>
+
+  <a class="navbar-brand" href="/map"><font color="white">Map</font></a>
 
       <%= render "search/search" %>
       
