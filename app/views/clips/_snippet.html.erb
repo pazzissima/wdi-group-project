@@ -30,11 +30,11 @@
       </audio>
     </br><%= @clip.description%>
       <input type="hidden" id="startTime" value="<%=@clip.startTime%>"></input>
-      <input type="hidden" id="duration" value="<%=@clip.duration%>"></input>
+      <input type="hidden" id="duration" value="<%=@clip.endTime%>"></input>
     </div>
     </br>
     </br></br>
-
+    <%=@clip.startTime%>
   <%if @clip_comments %>
     <h4>Comments: </h4>
 
@@ -48,9 +48,14 @@
     <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
 </div>
 <script>
+
   $(window).load(function(){
     document.getElementById("snippet").currentTime = parseInt($("#startTime").val());
 
-
+    $("#ott")[0].addEventListener('timeupdate', function(){
+      if (endTime && $("#ott")[0].currentTime >= (startTime + endTime)) {
+        $("#ott")[0].pause();
+      }
+    })
   })
 </script>
