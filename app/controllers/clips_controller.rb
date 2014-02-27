@@ -83,6 +83,14 @@ class ClipsController < ApplicationController
     end
   end
 
+  def map_clips
+    @clips = Clip.where.not(latitude:  nil)
+    respond_to do |f|
+      f.html
+      f.json { render :json => @clips, only: [:title, :latitude, :longitude]}
+    end
+    
+  end
 
 
   def destroy
