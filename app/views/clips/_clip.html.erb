@@ -1,0 +1,104 @@
+<div class="show">
+<h2><%= @clip.title %></h2>
+
+By: <%= @clip.performer %><br>
+Tags: <%= @tags %> <br>
+<div class="btn-group">
+  <% unless current_user == nil %>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      + <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+
+      <% unless @clip.user == nil || @clip.user.playlists == [] %>
+
+        <% @clip.user.playlists.each do |p| %>
+
+          <li>
+              <%= link_to p.title, playlist_path(p), method: :patch, playlist: p.id %>
+          <li>
+        <% end %>
+      <% end %>
+        <li> new playlist </li>
+    </ul>
+  <% end %>
+</div>
+
+  <div>
+    <audio id="track" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
+      <p>Your browser does not support the audio element.</p>
+    </audio>
+  </div>
+  </br>
+  </br></br>
+  <!-- form tag for snippet -->
+  <%= form_for :snippet do |f| %>
+    <%= f.text_field :title %>
+    <%= f.label :title %>
+  </br>
+    <%= f.text_field :description %> 
+    <%= f.label :description %>
+  </br></br>
+    <%= f.text_field :minutes %>
+    <%= f.label :minutes %></br>
+    <%= f.text_field :seconds %>
+    <%= f.label :seconds %></br>
+    <%= f.text_field :endTime %>
+    <%= f.label :endTime %></br>
+    <%= f.submit %>
+  <% end %>
+
+  <script>
+    $(document).ready(function(){
+
+      var startTime, endTime;
+
+      function playSegment(start,end) {
+        startTime = start, endTime = end;
+        $("#track")[0].currentTime = start;
+        $("#track")[0].play();
+      }
+
+      $("#play").on('click', function(event){
+        event.preventDefault();
+        $("#track")[0].pause();
+        var duration = parseInt($("#duration").val());
+        var min, sec;
+          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val()) * 60;};
+          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val());    };
+          if (parseInt($("#duration").val()) > 0) {}
+        playSegment(min+sec, duration);
+      });
+
+      $("#track")[0].addEventListener('timeupdate', function(){
+        if (endTime && $("#track")[0].currentTime >= (startTime + endTime)) {
+          $("#track")[0].pause();
+        }
+      })
+
+      $("#reset").on('click',function(event){
+        event.preventDefault();
+        $("#min").val("0");
+        $("#sec").val("0");
+        $("#duration").val("0");
+      });
+
+      $("#log").on('click', function(event) {event.preventDefault; console.log($("#track")[0].currentTime);});
+
+    })
+  </script>
+
+<%if @clip_comments %>
+  <h4>Comments: </h4>
+
+  <% @clip_comments.each do |comment| %>
+
+    <li><%= comment.body %></li>
+
+  <% end %>
+<% end %>
+
+  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
+</body>
+</html>
+</div>
