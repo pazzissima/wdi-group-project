@@ -70,9 +70,7 @@ Tags: <%= @tags %> <br>
 <% end %>
 
   <%= render "/comments/new_comment" %>
-  <% if signed_in? %>
-  <%= link_to "See all my clips", user_path(current_user) %><br>
-  <% end %>
+  <%= link_to "See all this user's clips", user_path(@clip.user) %><br>
   <%= link_to "See all clips", root_path %>
 </div>
 
