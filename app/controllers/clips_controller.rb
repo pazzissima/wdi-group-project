@@ -15,7 +15,14 @@ class ClipsController < ApplicationController
     @clip = Clip.new()
   end
 
-  def record
+  def snippet
+    startTime = (params[:snippet][:minutes].to_i * 60) + (params[:snippet][:seconds].to_i)
+    endTime = params[:snippet][:endTime].to_i
+    parent_clip = Clip.find(id = params[:id])
+    @clip = Clip.create(title: params[:snippet][:title], description: params[:snippet][:description], performer: parent_clip.performer, mp3: parent_clip.mp3, startTime: startTime, endTime: endTime)
+    parent_clip.clips << @clip
+    @clip.tags = parent_clip.tags
+    redirect_to clip_path(@clip)
   end
 
   def create
@@ -42,7 +49,6 @@ class ClipsController < ApplicationController
   def show
     @clip = Clip.find(params[:id])
     @clip_comments = @clip.comments
-
     @tags = @clip.display_tags
   end
 
@@ -83,6 +89,14 @@ class ClipsController < ApplicationController
     end
   end
 
+  def map_clips
+    @clips = Clip.where.not(latitude:  nil)
+    respond_to do |f|
+      f.html
+      f.json { render :json => @clips, only: [:title, :latitude, :longitude]}
+    end
+    
+  end
 
 
   def destroy

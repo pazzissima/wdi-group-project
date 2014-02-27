@@ -1,8 +1,5 @@
 WdiGroupProject::Application.routes.draw do
-  get "playlists/index"
-  get "playlists/new"
-  get "playlists/edit"
-  get "playlists/show"
+
   devise_for :users
   resources :users
   root to: "clips#index"
@@ -11,13 +8,20 @@ WdiGroupProject::Application.routes.draw do
     resources :comments#, except: [:index, :show]
   end
   post '/clips/update/:id', to: 'clips#like_clicked'
-  get '/clips/playlist/:id', to: 'clips#add_playlist'
+  post '/clips/playlist/:id', to: 'clips#add_playlist'
+  get '/map', to: 'clips#map_clips'
+
 
   get '/search', to: 'search#new', as: "new_search"
 
+  post '/clips/:id', to: 'clips#snippet'
+
+  resources :playlists
+
   post '/', to: 'search#create'
-
-  #resources :playlists
-
+  post '/users/:id', to: 'search#create'
+  post '/users/:id/edit', to: 'search#create'
+  post 'clips/:id', to: 'search#create'
+  post 'clips', to: 'search#create'
 
 end
