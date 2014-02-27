@@ -4,8 +4,8 @@
     <% end %>
 <% @clip_display.each do |clip| %>
       <ul>
-        <div class="index" ><h4><%= link_to clip.title, clip_path(clip) %></h4>
-        <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
+        <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>  </br>by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
+        <%= clip.description %>
         <div id="clip<%= clip.id %>" >
             <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count%></span>
             <button class="playlist">Add To Playlist</button> Playlists: <p id="play"></p>
