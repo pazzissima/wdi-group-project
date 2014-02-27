@@ -51,6 +51,12 @@ li {
   border-radius: 5px;
 }
 
+.index:hover {
+  background-color: rgba(200,200,200,0.9);
+  cursor: pointer;
+
+}
+
 .index_snippet{
   border: 1px solid #B8B8B8;
   background-color: rgba(232,232,232,0.7);
@@ -58,6 +64,11 @@ li {
   padding: 10px;
   width: 450px;
   border-radius: 5px;
+}
+
+.index_snippet:hover {
+  background-color: rgba(200,200,200,0.9);
+  cursor: pointer;
 }
 
 .glyphicon-thumbs-up:hover{

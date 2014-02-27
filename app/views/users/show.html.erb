@@ -13,8 +13,8 @@
   <ol>
     <!-- |clip| media and information -->
     <div class="index" >
-      <%= link_to clip.title, clip_path(clip.id) %> 
-      by: <%= clip.performer %>
+      <%= link_to clip.title, clip_path(clip.id) %></br>
+      by: <%= clip.performer %></br>
       <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
       <%= clip.description %> </br>
       <div id="clip<%= clip.id %>" >
