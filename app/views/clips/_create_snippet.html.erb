@@ -1,0 +1,11 @@
+<h2> Create a snippet of this clip </h2>
+<%= form_for :snippet, class: "form-horizontal" do |f| %>
+  <%= f.text_field :title, placeholder: "Snippet title", class: "form-control input-md" %>
+  <%= f.text_field :description, placeholder: "Description", class: "form-control input-md" %>
+  </br></br>
+  <%= f.label :minutes, "Snippet length" %></br>
+  <%= f.text_field :minutes, placeholder: "minutes. e.g., 0", class: "form-control input-md" %>
+  <%= f.text_field :seconds, placeholder: "seconds. e.g., 30", class: "form-control input-md" %>
+  <%= f.text_field :endTime, placeholder: "duration in seconds", class: "form-control input-md" %>
+  <%= f.submit "Create Snippet", class: "btn btn-default" %>
+<% end %>

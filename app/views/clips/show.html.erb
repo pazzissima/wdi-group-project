@@ -1,11 +1,83 @@
-<% if @clip.snippable_id.nil? %>
-  <%= render partial: 'clip' %>
-<% else %>
-  <%= render partial: 'snippet' %>
+<div class="search_block show">
+<h2><%= @clip.title %></h2>
+<h4>By: <%= @clip.performer %></h4>
+Tags: <%= @tags %> <br>
+<% if @clip.snippable_id %>
+  <p>Original clip: <%=link_to @parent.title, clip_path(@parent)%></p>
+<% end %>
+<p> <%=@clip.description%></p>
+</div>
+</div>
+
+<div class="search_block show">
+  <% if @clip.snippable_id %>
+    <%= render "snippet" %>
+  <% else %>
+    <%= render "clip" %>
+  <% end %>
+</div>
+
+<div class="search_block show">
+  <%= render "create_snippet" %>
+</div>
+
+<div class="search_block">
+<% unless @clip_comments == [] %>
+  <h4>Comments: </h4>
+  <% @clip_comments.each do |comment| %>
+    <ul class="comments">
+      <li>
+        <%= link_to comment.user.email, user_path(comment.user) %> says:
+        <ul><li><%= comment.body %></li></ul>
+      </li>
+    </ul>
+  <% end %>
+  </ul>
 <% end %>
 
-<br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a><br>
-<% if signed_in? %>
-<%= link_to "See all my clips", user_path(current_user) %><br>
-<% end %>
-<%= link_to "See all clips", root_path %>
+  <%= render "/comments/new_comment" %>
+  <% if signed_in? %>
+  <%= link_to "See all my clips", user_path(current_user) %><br>
+  <% end %>
+  <%= link_to "See all clips", root_path %>
+</div>
+
+<script>
+    $(document).ready(function(){
+
+      var startTime, endTime;
+
+      function playSegment(start,end) {
+        startTime = start, endTime = end;
+        $("#track")[0].currentTime = start;
+        $("#track")[0].play();
+      }
+
+      $("#play").on('click', function(event){
+        event.preventDefault();
+        $("#track")[0].pause();
+        var duration = parseInt($("#duration").val());
+        var min, sec;
+          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val()) * 60;};
+          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val());    };
+          if (parseInt($("#duration").val()) > 0) {}
+        playSegment(min+sec, duration);
+      });
+
+      $("#track")[0].addEventListener('timeupdate', function(){
+        if (endTime && $("#track")[0].currentTime >= (startTime + endTime)) {
+          $("#track")[0].pause();
+        }
+      })
+
+      $("#reset").on('click',function(event){
+        event.preventDefault();
+        $("#min").val("0");
+        $("#sec").val("0");
+        $("#duration").val("0");
+      });
+
+      $("#log").on('click', function(event) {event.preventDefault; console.log($("#track")[0].currentTime);});
+
+    })
+  </script>

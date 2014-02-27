@@ -50,6 +50,8 @@ class ClipsController < ApplicationController
     @clip = Clip.find(params[:id])
     @clip_comments = @clip.comments
     @tags = @clip.display_tags
+    @parent = Clip.find(@clip.snippable_id) if @clip.snippable_id
+    @comment = Comment.new
   end
 
   def like_clicked
@@ -101,7 +103,7 @@ class ClipsController < ApplicationController
       f.html
       f.json { render :json => @clips, only: [:title, :latitude, :longitude]}
     end
-    
+
   end
 
 
