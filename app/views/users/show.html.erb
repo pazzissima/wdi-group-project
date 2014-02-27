@@ -1,3 +1,4 @@
+
 <ul><div class="index">
   <div class="avatar">
   <h2>Welcome!</h2>
@@ -15,7 +16,7 @@
 
         <% if clip.snippable_id.nil? %>
           <!-- |clip| media and information -->
-          <div class="index hoverable" >
+          <div class="index clip hoverable" >
             <%= link_to clip.title, clip_path(clip.id) %></br>
             <!-- if |clip| is a snippet whose parent clip belongs to another user -->
             <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != current_user %>
@@ -50,11 +51,23 @@
             <% end %>
           <% end %>
           <!-- Link to show *all* snippets made from |clip| -->
-          <div class="index_snippet hoverable">
-            Click to view all snippets
-          </div>
+          <a href="/clips/<%= clip.id %>/snippets">
+            <div class="index_snippet hoverable">
+              Click to view all snippets
+            </div>
+          </a>
         <% end %>
 
       </ol>
     <% end %>
 <% end %>
+
+
+<script>
+    setTimeout(
+    ($(".clip").on('click', function() {
+      $(this).closest("ol").children(".index_snippet").toggleClass("hide");
+    // $(".index_snippet").toggleClass("hide");
+    })),500
+    )
+</script>

@@ -52,7 +52,8 @@ class ClipsController < ApplicationController
     @tags = @clip.display_tags
   end
 
-  def show_all_snippets
+  # show all snippets attributed to a given clip
+  def snippets
   end
 
   def like_clicked
