@@ -9,6 +9,8 @@ gem 'pg'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
 gem 'geocoder'
+gem 'sidekiq'
+gem 'unicorn'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

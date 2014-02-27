@@ -3,8 +3,9 @@
 <div class="home_page">
 <% @clip_display.each do |clip| %>
       <ul>
-        <div class="index" ><h4><%= link_to clip.title, clip_path(clip) %></h4>
+        <div class="index hoverable" ><h4><%= link_to clip.title, clip_path(clip) %></h4>
         <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
+
         <div id="clip<%= clip.id %>" >
             <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count %></span>
             <button class="playlist">Add To Playlist</button> Playlists: <p id="play"><%=clip.display_playlists%></p>
