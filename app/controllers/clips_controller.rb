@@ -52,6 +52,9 @@ class ClipsController < ApplicationController
     @tags = @clip.display_tags
   end
 
+  def show_all_snippets
+  end
+
   def like_clicked
     @clip = Clip.find(params[:id])
     if user_signed_in?
