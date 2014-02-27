@@ -1,11 +1,19 @@
-<div class="form">
-    <%= form_for @user do |f| %>
+<div class="index">
+  <%= image_tag @user.avatar.url(:medium) %><br>   
+  <%= form_for @user do |u| %>
     <div class="avatar">
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
+      <%= u.file_field :avatar %>
     </div>
     <div class="submit">
-      <%= f.submit %>
+      <%= u.submit %>
     </div>
-    <% end %>
-  </div>
+      Email: <%= u.text_field :email, placeholder: "enter email" %> <br>
+      Password: <%= u.text_field :password, placeholder: "enter password" %> <br>
+      <% u.submit %>
+  <% end %>
+</div>
+
+
+
+ 
+

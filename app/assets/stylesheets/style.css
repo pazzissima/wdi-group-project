@@ -1,9 +1,8 @@
 body:not(.navbar-header) {
     /*background-color: #C5EFF7;*/
-    background-size: cover;
     background-position: center;
+    background-size: 100%;
     color:black;
-   /* background-image: url('http://lisaewing.com/wp-content/uploads/2011/06/The-Blues.jpg')*/
    background-image: url('http://www.wallpaper77.com/upload/DesktopWallpapers/cache/Sound-Vector-abstract-wallpapers-vector-wallpaper-vectors-1920x1200.jpg')
 }
 
@@ -45,9 +44,9 @@ li {
   width: 500px;
   border-radius: 5px;
 }
+
 .glyphicon-thumbs-up:hover{
-  background: #B8B8B8;
-  cursor: pointer;
+background: #B8B8B8;
 }
 
 .glyphicon-ok{
@@ -61,6 +60,7 @@ li {
 .home_page{
 /*  margin-top: 8%;*/
 }
+
 .add_button {
   margin-top: 0;
   margin-left: 3%;
@@ -97,9 +97,32 @@ span.glyphicon-thumbs-up{
   font-size: 20px;
 }
 
+
 .playlist_index {
   list-style-type: none;
   font-size: 30px;
+}
+
+.profile{
+  color: white;
+  background-color: black;
+  background: -webkit-linear-gradient(bottom, rgba(0,10,10,1), rgba(0,10,10,.3));
+  background: -moz-linear-gradient(bottom, rgba(0,10,10,1), rgba(0,10,10,.3));
+  padding: 10px;
+  line-height: 20px;
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+  width: 40%;
+  left: 50%;
+}
+
+.avatar{
+  text-align: center;
+}
+
+.form{
+  margin-left: 20px;
 }
 
 span.count{
@@ -115,4 +138,5 @@ span.count{
   #save, #save img { height: 10vh; }
   #save { opacity: 0.25;}
   #save[download] { opacity: 1;}
+
 

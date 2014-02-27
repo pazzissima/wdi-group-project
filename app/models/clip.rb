@@ -5,6 +5,8 @@ class Clip < ActiveRecord::Base
   has_many :clip_playlists
   has_many :playlists, through: :clip_playlists
   has_many :likes
+  belongs_to :snippable, :polymorphic => true
+  has_many :clips, :as => :snippable
   accepts_nested_attributes_for :comments, :playlists
 
   has_attached_file :mp3, {
@@ -19,10 +21,12 @@ class Clip < ActiveRecord::Base
     :hash_secret => ENV['IMG_KEY']
 }
   validates_attachment_size :mp3, :less_than => 5.megabytes
+
   validates_attachment_content_type :mp3,
   :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3',
     "audio/x-wav","audio/wav", 'application/wav', 'application/wav'],
             :message => 'Please select a .mp3 or wav file'
+
 
   searchable do
     text :title, :transcript, :description
