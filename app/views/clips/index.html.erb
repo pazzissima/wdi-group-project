@@ -1,7 +1,5 @@
+<center><h3>See All Clips</h3></center>
 <div class="home_page">
-    <% if signed_in? %>
-      <button class="add_button"><a href="/clips/new">Add a new clip</a></button>
-    <% end %>
 <% @clip_display.each do |clip| %>
       <ul>
         <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>  </br>by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
