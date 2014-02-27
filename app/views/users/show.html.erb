@@ -9,32 +9,36 @@
 
 
 <% @user.clips.each do |clip| %>
+    <% if (current_user == @user) || (current_user != @user && clip.is_private? != true) %>
+      <ol>
+        <% if clip.snippable_id.nil? %>
+          <!-- |clip| media and information -->
+          <div class="index" >
+            <%= link_to clip.title, clip_path(clip.id) %></br>
+            by: <%= clip.performer %></br>
+            <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
+            <%= clip.description %> </br>
+            <div id="clip<%= clip.id %>" >
+              <button class="like">Like</button><br>
+              Likes: <p><%=clip.likes.count%></p>
+            </div>
+          </div>
+        <% end %>
 
-  <ol>
-    <!-- |clip| media and information -->
-    <div class="index" >
-      <%= link_to clip.title, clip_path(clip.id) %></br>
-      by: <%= clip.performer %></br>
-      <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
-      <%= clip.description %> </br>
-      <div id="clip<%= clip.id %>" >
-        <button class="like">Like</button><br>
-        Likes: <p><%=clip.likes.count%></p>
-      </div>
-    </div>
-
-    <!-- Snippet loop within |clip| -->
-    <% clip.clips.each do |snippet| %>
-      <div class="index_snippet"><%= link_to snippet.title, clip_path(snippet.id) %></br>
-        by: <%= clip.performer %>
-        <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
-        <%= snippet.description %></br>
-        <div id="clip<%= snippet.id %>" >
-          <button class="Like">Like</button></br>
-          Likes: <p><%=snippet.likes.count%></p>
-        </div>
-      </div>
+        <!-- Snippet loop within |clip| -->
+        <% clip.clips.each do |snippet| %>
+          <% if Clip.find(snippet.snippable_id).user_id == current_user.id %>
+            <div class="index_snippet"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+              by: <%= clip.performer %>
+              <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
+              <%= snippet.description %></br>
+              <div id="clip<%= snippet.id %>" >
+                <button class="Like">Like</button></br>
+                Likes: <p><%=snippet.likes.count%></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </ol>
     <% end %>
-  </ol>
-
 <% end %>
