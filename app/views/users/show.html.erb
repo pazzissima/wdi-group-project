@@ -25,7 +25,7 @@
 
     <!-- Snippet loop within |clip| -->
     <% clip.clips.each do |snippet| %>
-      <div class="index"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+      <div class="index_snippet"><%= link_to snippet.title, clip_path(snippet.id) %></br>
         by: <%= clip.performer %>
         <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
         <%= snippet.description %></br>
