@@ -9,10 +9,32 @@
 
 
 <% @user.clips.each do |clip| %>
+
   <ol>
-    <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>: <%= clip.description %> by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
-        <div id="clip<%= clip.id %>" >
-            <button class="like">Like</button><br>Likes: <p><%=clip.likes.count%></p>
+    <!-- |clip| media and information -->
+    <div class="index" >
+      <%= link_to clip.title, clip_path(clip.id) %> 
+      by: <%= clip.performer %>
+      <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
+      <%= clip.description %> </br>
+      <div id="clip<%= clip.id %>" >
+        <button class="like">Like</button><br>
+        Likes: <p><%=clip.likes.count%></p>
+      </div>
     </div>
+
+    <!-- Snippet loop within |clip| -->
+    <% clip.clips.each do |snippet| %>
+      <div class="index"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+        by: <%= clip.performer %>
+        <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
+        <%= snippet.description %></br>
+        <div id="clip<%= snippet.id %>" >
+          <button class="Like">Like</button></br>
+          Likes: <p><%=snippet.likes.count%></p>
+        </div>
+      </div>
+    <% end %>
   </ol>
+
 <% end %>
