@@ -3,3 +3,9 @@
 <% else %>
   <%= render partial: 'snippet' %>
 <% end %>
+
+<br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a><br>
+<% if signed_in? %>
+<%= link_to "See all my clips", user_path(current_user) %><br>
+<% end %>
+<%= link_to "See all clips", root_path %>
