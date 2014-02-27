@@ -33,12 +33,18 @@ Tags: <%= @tags %> <br>
   </br></br>
   <!-- form tag for snippet -->
   <%= form_for :snippet do |f| %>
-    <%= f.label :minutes %>
+    <%= f.text_field :title %>
+    <%= f.label :title %>
+  </br>
+    <%= f.text_field :description %> 
+    <%= f.label :description %>
+  </br></br>
     <%= f.text_field :minutes %>
-    <%= f.label :seconds %>
+    <%= f.label :minutes %></br>
     <%= f.text_field :seconds %>
-    <%= f.label :duration %>
+    <%= f.label :seconds %></br>
     <%= f.text_field :duration %>
+    <%= f.label :duration %></br>
     <%= f.submit %>
   <% end %>
 
