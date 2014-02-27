@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<body>
-<div class="show">
-<h2><%= @clip.title %></h2>
-
 By: <%= @clip.performer %><br>
 Tags: <%= @tags %> <br>
 
@@ -18,15 +11,17 @@ Tags: <%= @tags %> <br>
       <% unless current_user == nil %>
         <div class="btn-group" id="clip<%=params[:id]%>">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            add to playlist <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <% unless current_user.playlists == nil %>
-              <% current_user.playlists.each do |p| %>
-                <li id="playlist<%=p.id %>" class="playlist" >
-                  <%=p.title%>
+           add to playlist <span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu" role="menu">
+           <% unless current_user.playlists == nil %>
+             <% current_user.playlists.each do |p| %>
+               <li id="playlist<%=p.id %>" class="playlist" >
+                 <%=p.title%>
                   <% if @clip.playlists.exists?(id: p.id)%>
                     <span class="glyphicon glyphicon-ok"></span>
+                  <% else %>
+                    <span></span>
                   <% end %>
                 <li>
               <% end %>
@@ -60,8 +55,8 @@ Tags: <%= @tags %> <br>
         $("#ott")[0].pause();
         var duration = parseInt($("#duration").val());
         var min, sec;
-          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val()) * 60;};
-          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val());    };
+          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val() * 60;};
+          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val();    };
           if (parseInt($("#duration").val()) > 0) {}
         playSegment(min+sec, duration);
       });
@@ -79,7 +74,7 @@ Tags: <%= @tags %> <br>
         $("#duration").val("0");
       });
 
-      $("#log").on('click', function(event) {event.preventDefault; console.log($("#ott")[0].currentTime);});
+      $("#log").on('click', function(event) {event.preventDefault; console.log($("ott")[0].currentTime);});
 
     })
   </script>
@@ -94,7 +89,4 @@ Tags: <%= @tags %> <br>
   <% end %>
 <% end %>
 
-  <br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>
-</body>
-</html>
-</div>
+<br><a href="/clips/<%= @clip.id %>/comments/new">Leave your comment</a>

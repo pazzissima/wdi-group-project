@@ -14,7 +14,7 @@ WdiGroupProject::Application.routes.draw do
 
   post '/', to: 'search#create'
 
-  #resources :playlists
+  resources :playlists
 
 
 end

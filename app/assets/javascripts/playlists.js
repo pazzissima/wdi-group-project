@@ -20,7 +20,7 @@ $(function() {
 		},
 
 		added: function(playlistId){
-			$("#playlist"+playlistId).append("<span class='glyphicon glyphicon-ok'></span>");
+			$("#playlist"+playlistId > span).removeClass().addClass("glyphicon glyphicon-ok");
 		}
 	};
 

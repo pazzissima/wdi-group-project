@@ -97,6 +97,11 @@ span.glyphicon-thumbs-up{
   font-size: 20px;
 }
 
+.playlist_index {
+  list-style-type: none;
+  font-size: 30px;
+}
+
 span.count{
   font-size: 12px;
 }

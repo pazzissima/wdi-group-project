@@ -15,6 +15,14 @@ bromance.tags.create([
   {text: "this tho"}
 ])
 
+kai.playlists.create([
+  {title: "my jams"},
+  {title: "road trip"},
+  {title: "in-laws in town"},
+  {title: "all bros all the time"},
+  {title: "yuletide cheer"}
+])
+
 stephen = User.create(email: "stephen@github.com", password: "password", password_confirmation: "password")
 
 hony = stephen.clips.create(
