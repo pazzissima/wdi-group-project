@@ -15,11 +15,45 @@ Tags: <%= @tags %> <br>
   <% else %>
     <%= render "clip" %>
   <% end %>
+
+  <!-- playlist dropdown -->
+  <div class="clip">
+    <% unless current_user == nil %>
+      <div class="btn-group" id="clip<%=params[:id]%>">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+         add to playlist <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+         <% unless current_user.playlists == nil %>
+           <% current_user.playlists.each do |p| %>
+             <li id="playlist<%=p.id %>" class="playlist" >
+               <%=p.title%>
+                <% if @clip.playlists.exists?(id: p.id)%>
+                  <span class="glyphicon glyphicon-ok"></span>
+                <% else %>
+                  <span></span>
+                <% end %>
+              <li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <!-- /playlist dropdown -->
+
+  <!-- like button -->
+  <div id="clip<%= @clip.id %>" >
+    <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=@clip.likes.count %></span>
+  </div>
+  <!-- /like button -->
 </div>
 
-<div class="search_block show">
-  <%= render "create_snippet" %>
-</div>
+<% unless @clip.snippable_id %>
+  <div class="search_block show">
+    <%= render "create_snippet" %>
+  </div>
+<% end %>
 
 <div class="search_block">
 <% unless @clip_comments == [] %>
