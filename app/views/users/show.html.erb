@@ -39,7 +39,7 @@
           <!-- Snippets belonging to current_user within |clip| -->
           <% clip.clips.each do |snippet| %>
             <% if Clip.find(snippet.snippable_id).user_id == current_user.id %>
-              <div class="index_snippet hoverable"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+              <div class="index_snippet hoverable hide"><%= link_to snippet.title, clip_path(snippet.id) %></br>
                 by: <%= clip.performer %></br>
                 <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
                 <%= snippet.description %></br>
@@ -51,11 +51,11 @@
             <% end %>
           <% end %>
           <!-- Link to show *all* snippets made from |clip| -->
+            <div class="index_snippet hoverable hide">
           <a href="/clips/<%= clip.id %>/snippets">
-            <div class="index_snippet hoverable">
               Click to view all snippets
-            </div>
           </a>
+            </div>
         <% end %>
 
       </ol>

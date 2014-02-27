@@ -11,6 +11,8 @@
       <% snippet.tags.each do |tag| %>
         <%= tag.text%>, 
       <% end %></br>
+    <% if Clip.find(snippet.snippable_id).user_id != current_user.id %>
     User: <a href="<%=user_path(User.find(Clip.find(snippet.snippable_id).user_id))%>"><%= User.find(Clip.find(snippet.snippable_id).user_id).email %></a>
+    <% end %>
   </div>
 <% end %>
