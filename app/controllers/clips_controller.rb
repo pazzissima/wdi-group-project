@@ -22,6 +22,7 @@ class ClipsController < ApplicationController
     @clip = Clip.create(title: params[:snippet][:title], description: params[:snippet][:description], performer: parent_clip.performer, mp3: parent_clip.mp3, startTime: startTime, endTime: endTime)
     parent_clip.clips << @clip
     @clip.tags = parent_clip.tags
+    @clip.update_column(:user_id, current_user.id)
     redirect_to clip_path(@clip)
   end
 
