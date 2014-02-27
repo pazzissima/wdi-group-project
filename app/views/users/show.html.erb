@@ -15,7 +15,7 @@
 
         <% if clip.snippable_id.nil? %>
           <!-- |clip| media and information -->
-          <div class="index" >
+          <div class="index hoverable" >
             <%= link_to clip.title, clip_path(clip.id) %></br>
             <!-- if |clip| is a snippet whose parent clip belongs to another user -->
             <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != current_user %>
@@ -38,7 +38,7 @@
           <!-- Snippets belonging to current_user within |clip| -->
           <% clip.clips.each do |snippet| %>
             <% if Clip.find(snippet.snippable_id).user_id == current_user.id %>
-              <div class="index_snippet"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+              <div class="index_snippet hoverable"><%= link_to snippet.title, clip_path(snippet.id) %></br>
                 by: <%= clip.performer %></br>
                 <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
                 <%= snippet.description %></br>
@@ -50,7 +50,7 @@
             <% end %>
           <% end %>
           <!-- Link to show *all* snippets made from |clip| -->
-          <div class="index_snippet">
+          <div class="index_snippet hoverable">
             Click to view all snippets
           </div>
         <% end %>
