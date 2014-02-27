@@ -1,0 +1,7 @@
+<h1><%= current_user.email %>'s playlists</h1>
+
+<ul class = "search_block playlist_index">
+  <% @playlists.each do |p| %>
+    <li><%= link_to p.title, playlist_path(p) %></li>
+  <% end %>
+<ul>

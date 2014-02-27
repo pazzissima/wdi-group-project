@@ -1,2 +1,10 @@
-<h1>Playlists#show</h1>
-<p>Find me in app/views/playlists/show.html.erb</p>
+<h1><%= @playlist.title%> </h1>
+  <div class="search_block">
+    <% @playlist.clips.each do |c| %>
+      <div class="search_result">
+        <h3><%= link_to c.title, clip_path(c) %></h3>
+        <%= c.display_tags %><br>
+        <audio id="ott" controls src="<%=c.mp3.url%>"><br>
+      </div>
+    <% end %>
+  </div>

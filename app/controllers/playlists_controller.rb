@@ -17,14 +17,9 @@ class PlaylistsController < ApplicationController
   def edit
   end
 
-  def update
-    playlist = Playlist.find(params[:id])
-    binding.pry
-
-    redirect_to playlist_path(playlist)
-  end
 
   def show
+    @playlist = Playlist.find(params[:id])
   end
 
   def destroy

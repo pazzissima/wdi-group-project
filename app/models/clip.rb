@@ -56,4 +56,13 @@ class Clip < ActiveRecord::Base
     end
     tags.join(", ")
   end
+
+  def display_playlists
+    playlists = []
+      self.playlists.each do |p|
+        playlists << p.title
+      end
+
+      playlists.join(", ")
+  end
 end
