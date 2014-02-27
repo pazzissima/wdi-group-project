@@ -1,36 +1,42 @@
 $(function() {
-  var stockholm = new google.maps.LatLng(59.32522, 18.07002);
-var parliament = new google.maps.LatLng(59.327383, 18.06747);
-var marker;
 var map;
+
+function addMarker(pin){
+   new google.maps.Marker({
+    map:map,
+    draggable:true,
+    animation: google.maps.Animation.DROP,
+    position: pin
+  });
+}
 
 function initialize() {
   var mapOptions = {
-    zoom: 13,
-    center: stockholm
+    zoom: 12,
+    center: new google.maps.LatLng(37.7749,-122.4194)
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
 
-  marker = new google.maps.Marker({
-    map:map,
-    draggable:true,
-    animation: google.maps.Animation.DROP,
-    position: parliament
-  });
-  google.maps.event.addListener(marker, 'click', toggleBounce);
+  $.ajax({
+    url: "/map.json",
+    type: "GET",
+    //no data? ,
+    success: function(response) {
+      //console.log(response);
+      for (var i=0;i<response.length;i++){
+        lat = response[i].latitude;
+        lon = response[i].longitude;
+        new_pin = new google.maps.LatLng(lat, lon);
+        addMarker(new_pin);
+      }
+
+
+    }});
 }
 
-function toggleBounce() {
-
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
+initialize();
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 });
