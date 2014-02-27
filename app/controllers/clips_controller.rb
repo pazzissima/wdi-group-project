@@ -5,9 +5,11 @@ class ClipsController < ApplicationController
 
   def index
     @clips = Clip.all
-    for c in @clips
-      update_score c
-    end
+    # for c in @clips
+    #   update_score c
+    # end
+    clip_id = @clips.first.id
+    ScoreWorker.perform_async(clip_id)
     @clip_display = Clip.limit(20).order('score DESC')
   end
 
@@ -28,17 +30,20 @@ class ClipsController < ApplicationController
 
   def create
     clip = current_user.clips.create(params.require(:clip).permit(:mp3, :title, :performer, :description))
-    tag_string = params.require(:tags).permit(:text)[:text]
-    tag_array = tag_string.split(", ")
+    if clip.id != nil
+      tag_string = params.require(:tags).permit(:text)[:text]
+      tag_array = tag_string.split(", ")
 
-    tag_array.each do |tag|
-      clip.tags.create(text: tag)
+      tag_array.each do |tag|
+        clip.tags.create(text: tag)
+      end
+
+      GeoWorker.perform_async(clip.id)
+    
+      redirect_to clip_path(clip)
+    else
+      redirect_to clips_path
     end
-    ip_address = open('http://whatismyip.akamai.com').read
-    cords = Geocoder.coordinates(ip_address)
-    clip.update_attributes({ip_address: ip_address, latitude: cords[0], longitude: cords[1]})
-
-    redirect_to clip_path(clip)
   end
 
   def edit
@@ -74,15 +79,15 @@ class ClipsController < ApplicationController
   end
 
   def update_score clip
-    created_time = clip.created_at
-    hours_since = (Time.now()-created_time)/3600
-    if hours_since < 100
-      likes = clip.likes.count
-      score = (likes**0.8)/((hours_since+2)**1.8)
-    else
-      score = 0
-    end
-    clip.update_column(:score, score)
+    # created_time = clip.created_at
+    # hours_since = (Time.now()-created_time)/3600
+    # if hours_since < 100
+    #   likes = clip.likes.count
+    #   score = (likes**0.8)/((hours_since+2)**1.8)
+    # else
+    #   score = 0
+    # end
+    # clip.update_column(:score, score)
   end
 
   def add_to_playlist

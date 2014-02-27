@@ -188,9 +188,6 @@ span.count{
   background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
   background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
 }
-#save, #save img { height: 10vh; }
-#save { opacity: 0.25;}
-#save[download] { opacity: 1;}
 
 #add_clip{
   text-align: center;
