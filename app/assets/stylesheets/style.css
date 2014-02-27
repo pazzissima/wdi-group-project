@@ -3,7 +3,7 @@ body:not(.navbar-header) {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color:white;
+    color:black;
    /* background-image: url('http://lisaewing.com/wp-content/uploads/2011/06/The-Blues.jpg')*/
    background: url('http://www.wallpaper77.com/upload/DesktopWallpapers/cache/Sound-Vector-abstract-wallpapers-vector-wallpaper-vectors-1920x1200.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -36,7 +36,7 @@ li {
 
 .search_block{
   border: 1px solid grey;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 10px auto;
   padding: 10px;
   width: 500px;
@@ -45,7 +45,7 @@ li {
 
 .index{
   border: 1px solid #B8B8B8;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(232,232,232,0.7);
   margin: 10px auto;
   padding: 10px;
   width: 500px;
