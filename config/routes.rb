@@ -17,6 +17,7 @@ WdiGroupProject::Application.routes.draw do
   get '/search', to: 'search#new', as: "new_search"
 
   post '/clips/:id', to: 'clips#snippet'
+  get '/clips/:id/snippets', to: 'clips#snippets'
 
   resources :playlists
 

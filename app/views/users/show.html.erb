@@ -1,3 +1,4 @@
+
 <ul><div class="index">
   <div class="avatar">
   <h2>Welcome!</h2>
@@ -14,10 +15,64 @@
 
 <center><ul><h3>My Clips:</h3></ul></center>
 <% @user.clips.each do |clip| %>
-  <ol>
-    <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>: <%= clip.description %> by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
-        <div id="clip<%= clip.id %>" >
-            <button class="like">Like</button><br>Likes: <p><%=clip.likes.count%></p>
-    </div>
-  </ol>
+    <!-- Only display if correct user is logged in or if clip is not private -->
+    <% if current_user == @user || clip.is_private? != true %>
+      <ol>
+
+        <% if clip.snippable_id.nil? %>
+          <!-- |clip| media and information -->
+          <div class="index clip hoverable" >
+            <%= link_to clip.title, clip_path(clip.id) %></br>
+            <!-- if |clip| is a snippet whose parent clip belongs to another user -->
+            <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != current_user %>
+                <h4>Original clip: <a href="<%=clip_path(@clip.snippable_id)%>"><%=Clip.find(@clip.snippable_id).title%></a>
+                </h4>
+            <% end %>
+
+            by: <%= clip.performer %></br>
+            <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
+            <%= clip.description %> </br>
+            <div id="clip<%= clip.id %>" >
+              <button class="like">Like</button><br>
+              Likes: <p><%=clip.likes.count%></p>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- Snippets -->
+        <% unless clip.clips.empty? %>
+          <!-- Snippets belonging to current_user within |clip| -->
+          <% clip.clips.each do |snippet| %>
+            <% if Clip.find(snippet.snippable_id).user_id == current_user.id %>
+              <div class="index_snippet hoverable hide"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+                by: <%= clip.performer %></br>
+                <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
+                <%= snippet.description %></br>
+                <div id="clip<%= snippet.id %>" >
+                  <button class="Like">Like</button></br>
+                  Likes: <p><%=snippet.likes.count%></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <!-- Link to show *all* snippets made from |clip| -->
+            <div class="index_snippet hoverable hide">
+          <a href="/clips/<%= clip.id %>/snippets">
+              Click to view all snippets
+          </a>
+            </div>
+        <% end %>
+
+      </ol>
+    <% end %>
 <% end %>
+
+
+<script>
+    setTimeout(
+    ($(".clip").on('click', function() {
+      $(this).closest("ol").children(".index_snippet").toggleClass("hide");
+    // $(".index_snippet").toggleClass("hide");
+    })),500
+    )
+</script>

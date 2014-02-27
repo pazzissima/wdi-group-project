@@ -67,6 +67,24 @@ li {
   border-radius: 5px;
 }
 
+.index_snippet{
+  border: 1px solid #B8B8B8;
+  background-color: rgba(232,232,232,0.7);
+  margin: 10px auto;
+  padding: 10px;
+  width: 450px;
+  border-radius: 5px;
+}
+
+.hoverable:hover {
+  background-color: rgba(200,200,200,0.9);
+  cursor: pointer;
+}
+
+.hide{
+  display:none;
+}
+
 .glyphicon-thumbs-up:hover{
 background: #B8B8B8;
 }

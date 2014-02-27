@@ -55,6 +55,11 @@ class ClipsController < ApplicationController
     @comment = Comment.new
   end
 
+  # show all snippets attributed to a given clip
+  def snippets
+    @clip = Clip.find(params[:id])
+  end
+
   def like_clicked
     @clip = Clip.find(params[:id])
     if user_signed_in?
