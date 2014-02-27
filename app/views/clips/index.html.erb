@@ -1,6 +1,7 @@
-<div class="home_page">
-  <button class="add_button"><a href="/clips/new">Add a new clip</a></button>
-  <% @clip_display.each do |clip| %>
+<% if signed_in? %>
+<button class="add_button"><a href="/clips/new">Add a new clip</a></button>
+<% end %>
+<% @clip_display.each do |clip| %>
       <ul>
         <div class="index" ><%= link_to clip.title, clip_path(clip.id) %>: <%= clip.description %> by: <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
         <div id="clip<%= clip.id %>" >
@@ -8,5 +9,4 @@
       </div>
       </ul>
     </div>
-  <% end %>
-</div>
+<% end %>

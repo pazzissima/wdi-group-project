@@ -1,4 +1,7 @@
 <!-- <%= render "search" %> -->
+<% if @title_results == [] && @content_results == [] && @tag_results ==[] %>
+<div class="index"><h2>Boo! No results were found. <br>Try again.</h2></div>
+<% end %>
 
 <%unless @title_results == [] %>
   <div class="search_block">
