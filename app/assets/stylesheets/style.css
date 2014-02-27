@@ -45,9 +45,17 @@ li {
   width: 500px;
   border-radius: 5px;
 }
-.glyphicon:hover{
+.glyphicon-thumbs-up:hover{
   background: #B8B8B8;
   cursor: pointer;
+}
+
+.glyphicon-ok{
+  color: green;
+}
+
+.playlist:hover{
+  background: #EEEEEE;
 }
 
 .home_page{
@@ -93,11 +101,11 @@ span.count{
   font-size: 12px;
 }
 
-  #record.recording { 
+  #record.recording {
     background: red;
-    background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-    background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-    background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+    background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
+    background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
+    background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
   }
   #save, #save img { height: 10vh; }
   #save { opacity: 0.25;}

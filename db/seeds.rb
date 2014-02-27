@@ -47,3 +47,6 @@ yuletide.tags.create([
   {text: "bromance"},
   {text: "hats"}
 ])
+
+new_list = sofya.playlists.create(title: "playlist one")
+yuletide.playlists << new_list

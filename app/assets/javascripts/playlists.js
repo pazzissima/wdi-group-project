@@ -1,31 +1,38 @@
 $(function() {
 
-Playlist = {
-	// write some function to do add to playlist
-	addToPlaylist: function(response){
-		var playlists = response.playlists;
-		var id = response.clip.id;
-		$("#clip"+id+" > #play").empty().append(playlists[0].title);
-	}
-};
-	
-$(".playlist").on('click', function(event){
-	event.preventDefault();
-	// this === the button that was clicked
-	// this.closest should === the containing div
-	// this.closest.attr("id") should === the clip id
-	var id = $(this).closest("div").attr("id").substr(4);
-	var playlist_id = $(this).attr("id");
+	Playlist = {
+		// write some function to do add to playlist
+		patchToPlaylist: function(clipId, playlistId){
+			var url = "/clips/" + clipId + "/playlist/" + playlistId;
+			var data = {};
+			var authParam = $('meta[name=csrf-param]').attr('content');
+			var authToken = $('meta[name=csrf-token]').attr('content');
+			data[authParam] = authToken;
 
-	$.ajax({
-		url: "/clips/playlist/"+id,
-		type: "POST",
-		// data: no data?,
-		success: function(response) {
-			// call the function from Playlist
-			Playlist.addToPlaylist(response);
+			$.ajax({
+				type: 'patch',
+				url: url,
+				data: data,
+				success: function(){
+					Playlist.added(playlistId);
+				}
+			});
+		},
+
+		added: function(playlistId){
+			$("#playlist"+playlistId).append("<span class='glyphicon glyphicon-ok'></span>");
 		}
+	};
+
+	$(".playlist").on('click', function(event){
+		event.preventDefault();
+		// this === the button that was clicked
+		// this.closest should === the containing div
+		// this.closest.attr("id") should === the clip id
+		var clipId = $(this).closest("div").attr("id").substr(4);
+		var playlistId = $(this).attr("id").substr(8);
+
+		Playlist.patchToPlaylist(clipId, playlistId);
 	});
-});
 
 });

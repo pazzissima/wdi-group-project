@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="General_Assembly/Resources/jQuery/jQuery.min.js"></script>
-</head>
 <body>
 <div class="show">
 <h2><%= @clip.title %></h2>
 
 By: <%= @clip.performer %><br>
 Tags: <%= @tags %> <br>
-<div class="btn-group">
-  <% unless current_user == nil %>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      Select Playlist To Add <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu">
-      <% unless current_user.playlists == nil %>
-        <% current_user.playlists.each do |p| %>
-          <li id="playlist"+<%= p.id %> class="playlist">
-              <%=link_to p.title %>
-          <li>
-        <% end %>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
 
   <div>
-    <audio id="ott" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
+    <audio id="ott" controls src="<%=@clip.mp3.url%>">
     <!-- <source src="horse.ogg" type="audio/ogg"> -->
     <!-- <source src="Ott Mix pt 1.mp3" type="audio/mpeg"> -->
       <p>Your browser does not support the audio element.</p>
     </audio>
+    <div class="clip">
+      <% unless current_user == nil %>
+        <div class="btn-group" id="clip<%=params[:id]%>">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            add to playlist <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <% unless current_user.playlists == nil %>
+              <% current_user.playlists.each do |p| %>
+                <li id="playlist<%=p.id %>" class="playlist" >
+                  <%=p.title%>
+                  <% if @clip.playlists.exists?(id: p.id)%>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  <% end %>
+                <li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
   </br>
   </br></br>

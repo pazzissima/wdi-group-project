@@ -62,24 +62,30 @@ class ClipsController < ApplicationController
   def update_score clip
     created_time = clip.created_at
     hours_since = (Time.now()-created_time)/3600
-    if hours_since < 100 
+    if hours_since < 100
       likes = clip.likes.count
       score = (likes**0.8)/((hours_since+2)**1.8)
-    else 
+    else
       score = 0
     end
     clip.update_column(:score, score)
   end
 
-  def add_playlist
-    @clip = Clip.find(params[:id])
-    if current_user.playlists == []
-      new_playlist = Playlist.create(title: "Favorites")
-      current_user.playlists << new_playlist
-      new_playlist.clips << @clip
+  def add_to_playlist
+    @clip = Clip.find(params[:clip_id])
+    @playlist = Playlist.find(params[:id])
+
+    unless @clip.playlists.exists?(id: @playlist.id)
+      @clip.playlists << @playlist
     end
+
+    # if current_user.playlists == []
+    #   new_playlist = Playlist.create(title: "Favorites")
+    #   current_user.playlists << new_playlist
+    #   new_playlist.clips << @clip
+    # end
     respond_to do |f|
-      f.json { render :json => {clip: @clip, playlists: @clip.playlists}}
+      f.json { render :json => {clip: @clip, playlist: @playlist}}
     end
   end
 

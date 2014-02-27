@@ -19,8 +19,8 @@ class Clip < ActiveRecord::Base
     :hash_secret => ENV['IMG_KEY']
 }
   validates_attachment_size :mp3, :less_than => 5.megabytes
-  validates_attachment_content_type :mp3, 
-  :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3', 
+  validates_attachment_content_type :mp3,
+  :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3',
     "audio/x-wav","audio/wav", 'application/wav', 'application/wav'],
             :message => 'Please select a .mp3 or wav file'
 
@@ -51,5 +51,14 @@ class Clip < ActiveRecord::Base
       tags << t.text
     end
     tags.join(", ")
+  end
+
+  def display_playlists
+    playlists = []
+      self.playlists.each do |p|
+        playlists << p.title
+      end
+
+      playlists.join(", ")
   end
 end
