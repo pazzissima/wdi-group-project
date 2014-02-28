@@ -1,8 +1,8 @@
 
-<center><h3>See All Clips</h3></center>
+<center><h3 class="index">Trending Clips</h3></center>
 <div class="home_page">
 <% @clip_display.each do |clip| %>
-      <ul>
+
         <div class="index hoverable" ><h4><%= link_to clip.title, clip_path(clip) %></h4>
         <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
 
@@ -11,7 +11,7 @@
             <button class="playlist">Add To Playlist</button> Playlists: <p id="play"><%=clip.display_playlists%></p>
 
       </div>
-      </ul>
+
     </div>
   <% end %>
 </div>

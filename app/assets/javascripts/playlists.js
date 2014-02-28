@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("ready page:load", function() {
 
 	Playlist = {
 		// write some function to do add to playlist
