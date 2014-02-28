@@ -11,14 +11,15 @@ function addMarker(pin){
 }
 
 function initialize() {
-  var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(37.7749,-122.4194)
-  };
+  map_canvas = document.getElementById('map-canvas');
+  if(map_canvas)
+  {
+    var mapOptions = {
+      zoom: 12,
+      center: new google.maps.LatLng(37.7749,-122.4194)
+    };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-          mapOptions);
-
+    map = new google.maps.Map(map_canvas,mapOptions);
   $.ajax({
     url: "/map.json",
     type: "GET",
@@ -31,9 +32,10 @@ function initialize() {
         new_pin = new google.maps.LatLng(lat, lon);
         addMarker(new_pin);
       }
-
-
-    }});
+    }
+   }
+  );
+ }
 }
 
 initialize();
