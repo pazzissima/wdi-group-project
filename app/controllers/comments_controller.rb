@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   def index
     @clip = Clip.find(params[:clip_id])
     @comments = @clip.comments
