@@ -36,7 +36,8 @@ class ClipsController < ApplicationController
       tag_array.each do |tag|
         clip.tags.create(text: tag)
       end
-
+   ip = request.remote_ip
+   binding.pry
       GeoWorker.perform_async(clip.id, request.remote_ip)
     
       redirect_to clip_path(clip)
