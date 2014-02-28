@@ -1,4 +1,4 @@
-$(function() {
+$(window).load(function() {
 var map;
 
 function addMarker(pin){
