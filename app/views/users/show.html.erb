@@ -31,6 +31,9 @@
             by: <%= clip.performer %></br>
             <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
             <%= clip.description %> </br>
+        <% unless clip.clips.empty? %>
+        <p style="text-align:right">+</p>
+        <% end %>
           </div>
         <% end %>
 
@@ -39,7 +42,7 @@
           <!-- Snippets belonging to current_user within |clip| -->
           <% clip.clips.each do |snippet| %>
             <% if Clip.find(snippet.snippable_id).user_id == @user.id %>
-              <div class="index_snippet hoverable hide"><%= link_to snippet.title, clip_path(snippet.id) %></br>
+              <div class="index_snippet snippet hoverable hide"><%= link_to snippet.title, clip_path(snippet.id) %></br>
                 by: <%= clip.performer %></br>
                 <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
                 <%= snippet.description %></br>
