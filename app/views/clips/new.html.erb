@@ -1,4 +1,5 @@
 <div class="new">
+<div class="index">
 <h2>Upload your clip here!</h2>
 
 <%= render partial: 'record' %>
@@ -19,8 +20,9 @@
 
     <%= fields_for :tags do |tagform| %>
         <%= tagform.label "Tags (comma separated)" %>
-        <%= tagform.text_field :text %>
+        <%= tagform.text_field :text %><br>
     <% end %>
     <%= f.submit %>
 <% end %>
+</div>
 </div>

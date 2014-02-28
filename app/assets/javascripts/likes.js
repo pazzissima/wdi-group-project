@@ -1,7 +1,7 @@
 $(function() {
 
 Likes = {
-	// write some function to do shit
+	// write some function to do something
 	increment_likes_in_DOM: function(response){
 		//grabs total likes and updates likes by 1
 		var count = response.count;
@@ -18,7 +18,7 @@ $(".like").on('click', function(event){
 	var id = $(this).closest("div").attr("id").substr(4);
 
 	$.ajax({
-		url: "/clips/update/"+id,
+		url: "/clips/update/"+id+".json",
 		type: "POST",
 		// data: no data?,
 		success: function(response) {
