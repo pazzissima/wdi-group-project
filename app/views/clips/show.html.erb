@@ -36,6 +36,10 @@ Tags: <%= @tags %> <br>
               <li>
             <% end %>
           <% end %>
+          <%= form_for @playlist do |f| %>
+            <%= f.text_field :title, placeholder: :title %>
+            <%= f.submit %>
+          <% end %>
         </ul>
       </div>
     <% end %>
