@@ -9,7 +9,7 @@
 
     setTimeout(
     function(){snippet.currentTime = startingTime},
-    500);
+    1000);
 
     snippet.addEventListener('timeupdate', function(){
       if (endingTime && snippet.currentTime >= (startingTime + endingTime)) {
