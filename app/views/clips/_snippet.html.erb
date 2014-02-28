@@ -25,7 +25,7 @@
   </div>
 
     <div>
-      <audio id="snippet" controls src="<%=@clip.mp3.url%>" style="background-color: red; width: 60%">
+      <audio id="snippet" controls src="<%=@clip.mp3.url%>" preload="metadata" style="background-color: red; width: 60%">
         <p>Your browser does not support the audio element.</p>
       </audio>
     </br><%= @clip.description%>
@@ -34,7 +34,6 @@
     </div>
     </br>
     </br></br>
-    <%=@clip.startTime%>
   <%if @clip_comments %>
     <h4>Comments: </h4>
 

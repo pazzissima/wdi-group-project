@@ -62,12 +62,5 @@
     <% end %>
 <% end %>
 
-
-<script>
-    setTimeout(
-    ($(".clip").on('click', function() {
-      $(this).closest("ol").children(".index_snippet").toggleClass("hide");
-    // $(".index_snippet").toggleClass("hide");
-    })),500
-    )
-</script>
+<%= javascript_include_tag "users_show" %>
+<%= javascript_include_tag "likes" %>
