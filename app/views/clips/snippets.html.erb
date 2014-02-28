@@ -4,14 +4,12 @@
 
 <% @clip.clips.each do |snippet| %>
   <div class="index_snippet hoverable">
-    Title: <%= snippet.title %></br>
+    Title: <%= link_to snippet.title, clip_path(snippet) %></br>
     By: <%= snippet.performer %></br>
     Description: <%= snippet.description %></br>
     Tags:
-      <% snippet.tags.each do |tag| %>
-        <%= tag.text%>, 
-      <% end %></br>
-    <% if Clip.find(snippet.snippable_id).user_id != current_user.id %>
+      <%= snippet.display_tags %></br>
+    <% if @clip.user_id != snippet.user_id %>
     User: <a href="<%=user_path(User.find(Clip.find(snippet.snippable_id).user_id))%>"><%= User.find(Clip.find(snippet.snippable_id).user_id).email %></a>
     <% end %>
   </div>

@@ -26,7 +26,7 @@
           <div class="index clip hoverable" >
             <%= link_to clip.title, clip_path(clip.id) %></br>
             <!-- if |clip| is a snippet whose parent clip belongs to another user -->
-            <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != current_user %>
+            <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != @user.id %>
                 <h4>Original clip: <a href="<%=clip_path(@clip.snippable_id)%>"><%=Clip.find(@clip.snippable_id).title%></a>
                 </h4>
             <% end %>
@@ -45,7 +45,7 @@
         <% unless clip.clips.empty? %>
           <!-- Snippets belonging to current_user within |clip| -->
           <% clip.clips.each do |snippet| %>
-            <% if Clip.find(snippet.snippable_id).user_id == current_user.id %>
+            <% if Clip.find(snippet.snippable_id).user_id == @user.id %>
               <div class="index_snippet hoverable hide"><%= link_to snippet.title, clip_path(snippet.id) %></br>
                 by: <%= clip.performer %></br>
                 <audio id="track" controls src="<%=snippet.mp3.url%>"></audio></br>
