@@ -9,8 +9,10 @@
 <% end %>
 </div>
 
-<ul class = "search_block playlist_index">
-  <% @playlists.each do |p| %>
-    <li><%= link_to p.title, playlist_path(p) %></li>
-  <% end %>
-<ul>
+<% unless @playlists == [] %>
+  <ul class = "search_block playlist_index">
+    <% @playlists.each do |p| %>
+      <li><%= link_to p.title, playlist_path(p) %></li>
+    <% end %>
+  <ul>
+<% end %>
