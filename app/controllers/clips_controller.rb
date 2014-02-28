@@ -56,6 +56,7 @@ class ClipsController < ApplicationController
     @tags = @clip.display_tags
     @parent = Clip.find(@clip.snippable_id) if @clip.snippable_id
     @comment = Comment.new
+    @playlist = Playlist.new
   end
 
   # show all snippets attributed to a given clip
