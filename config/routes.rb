@@ -14,18 +14,13 @@ WdiGroupProject::Application.routes.draw do
   get '/map', to: 'clips#map_clips'
 
 
-  get '/search', to: 'search#new', as: "new_search"
+  post '/search', to: 'search#create'
 
   post '/clips/:id', to: 'clips#snippet'
   get '/clips/:id/snippets', to: 'clips#snippets'
 
   resources :playlists
 
-  post '/', to: 'search#create'
-  post '/users/:id', to: 'search#create'
-  post '/users/:id/edit', to: 'search#create'
-  post 'clips/:id', to: 'search#create'
-  post 'clips', to: 'search#create'
-  post '/map', to: 'search#create'
+
 
 end
