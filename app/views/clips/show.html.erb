@@ -74,45 +74,6 @@ Tags: <%= @tags %> <br>
   <%= link_to "See all clips", root_path %>
 </div>
 
-<script>
-    $(document).ready(function(){
-
-      var startTime, endTime;
-
-      function playSegment(start,end) {
-        startTime = start, endTime = end;
-        $("#track")[0].currentTime = start;
-        $("#track")[0].play();
-      }
-
-      $("#play").on('click', function(event){
-        event.preventDefault();
-        $("#track")[0].pause();
-        var duration = parseInt($("#duration").val());
-        var min, sec;
-          if (isNaN($("#min").val())) {min = 0;} else {min = parseInt($("#min").val()) * 60;};
-          if (isNaN($("#sec").val())) {sec = 0;} else {sec = parseInt($("#sec").val());    };
-          if (parseInt($("#duration").val()) > 0) {}
-        playSegment(min+sec, duration);
-      });
-
-      $("#track")[0].addEventListener('timeupdate', function(){
-        if (endTime && $("#track")[0].currentTime >= (startTime + endTime)) {
-          $("#track")[0].pause();
-        }
-      })
-
-      $("#reset").on('click',function(event){
-        event.preventDefault();
-        $("#min").val("0");
-        $("#sec").val("0");
-        $("#duration").val("0");
-      });
-
-      $("#log").on('click', function(event) {event.preventDefault; console.log($("#track")[0].currentTime);});
-
-    })
-  </script>
-
 <%= javascript_include_tag "playlists" %>
 <%= javascript_include_tag "likes" %>
+<%= javascript_include_tag "snippets" %>
