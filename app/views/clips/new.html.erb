@@ -1,25 +1,26 @@
 <div class="index new">
-<h2>Upload your clip here!</h2>
-
+<h2 id="upload_title">Upload your clip here!</h2></br>
+<div id="record_partial">
 <%= render partial: 'record' %>
+</div></br>
 <%= form_for @clip do |f| %>
 
 
    <!--  <%= f.label "mp3" %> -->
     <%= f.file_field :mp3 %><br>
 
-    <%= f.label "Title" %>
-    <%= f.text_field :title %><br>
+    <%= f.text_field :title %>
+    <%= f.label "Title" %><br>
 
-    <%= f.label "Performer" %>
-    <%= f.text_field :performer %><br>
+    <%= f.text_field :performer %>
+    <%= f.label "Performer" %><br>
 
-    <%= f.label "Description" %>
-    <%= f.text_field :description %><br>
+    <%= f.text_field :description %>
+    <%= f.label "Description" %><br>
 
     <%= fields_for :tags do |tagform| %>
-        <%= tagform.label "Tags (comma separated)" %>
-        <%= tagform.text_field :text %><br>
+        <%= tagform.text_field :text %>
+        <%= tagform.label "Tags (comma separated)" %><br>
     <% end %>
     <%= f.submit %>
 <% end %>
