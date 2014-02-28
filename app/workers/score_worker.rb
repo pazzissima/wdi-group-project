@@ -1,6 +1,6 @@
 class ScoreWorker
   include Sidekiq::Worker
-  def perform(clip_id)
+  def perform()
 	  	clips = Clip.all
 		 for clip in clips
 		  	created_time = clip.created_at

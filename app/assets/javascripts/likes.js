@@ -17,10 +17,11 @@ $(".like").on('click', function(event){
 	// this.closest.attr("id") should === the clip id
 	var id = $(this).closest("div").attr("id").substr(4);
 
+
 	$.ajax({
 		url: "/clips/update/"+id+".json",
 		type: "POST",
-		// data: no data?,
+		data: {'op' : 'like'},
 		success: function(response) {
 			// call the function from Likes
 			Likes.increment_likes_in_DOM(response);

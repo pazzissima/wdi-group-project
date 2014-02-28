@@ -8,8 +8,7 @@ class ClipsController < ApplicationController
     # for c in @clips
     #   update_score c
     # end
-    clip_id = @clips.first.id
-    ScoreWorker.perform_async(clip_id)
+    ScoreWorker.perform_async()
     @clip_display = Clip.limit(20).order('score DESC')
   end
 
@@ -38,7 +37,7 @@ class ClipsController < ApplicationController
         clip.tags.create(text: tag)
       end
 
-      GeoWorker.perform_async(clip.id)
+      GeoWorker.perform_async(clip.id, request.remote_ip)
     
       redirect_to clip_path(clip)
     else
