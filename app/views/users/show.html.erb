@@ -11,9 +11,11 @@
 </div></ul>
 <br>
 
-<ul><div class="index"><div id="add_clip">
-  <a href="/clips/new">Add a Clip</a></div>
-</div></ul>
+<% if current_user == @user %>
+  <ul><div class="index"><div id="add_clip">
+    <a href="/clips/new">Add a Clip</a></div>
+  </div></ul>
+<% end %>
 
 <center><ul><h3>My Clips:</h3></ul></center>
 <% @user.clips.each do |clip| %>
