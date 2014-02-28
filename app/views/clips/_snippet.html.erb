@@ -1,5 +1,7 @@
-    <audio id="snippet" controls src="<%=@clip.mp3.url%>">
-        <p>Your browser does not support the audio element.</p>
-      </audio>
-      <input type="hidden" id="startTime" value="<%=@clip.startTime%>"></input>
-      <input type="hidden" id="endTime" value="<%=@clip.endTime%>"></input>
+<audio id="snippet" controls src="<%=@clip.mp3.url%>">
+  <p>Your browser does not support the audio element.</p>
+</audio>
+<input type="hidden" id="startTime" value="<%=@clip.startTime%>"></input>
+<input type="hidden" id="endTime" value="<%=@clip.endTime%>"></input>
+
+<%= javascript_include_tag "snippets" %>

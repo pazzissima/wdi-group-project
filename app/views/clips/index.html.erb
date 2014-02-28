@@ -7,6 +7,7 @@
         <%= clip.performer %><br><audio id="ott" controls src="<%=clip.mp3.url%>"></audio><br>
 
         <div id="clip<%= clip.id %>" >
+
             <span class="like glyphicon glyphicon-thumbs-up"></span>  <span class="count"><%=clip.likes.count %></span>
             <button class="playlist">Add To Playlist</button> Playlists: <p id="play"><%=clip.display_playlists%></p>
 
@@ -16,3 +17,4 @@
   <% end %>
 </div>
 
+<%= javascript_include_tag "likes" %>
