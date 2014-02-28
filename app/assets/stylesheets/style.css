@@ -28,8 +28,9 @@ li {
 .new{
   padding-left: 20px;
   width: 40%;
-  float: left;
+/*  float: left;*/
   text-align: right;
+  margin-left: 20%;
 }
 
 .navbar{
