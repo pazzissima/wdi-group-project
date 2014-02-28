@@ -1,4 +1,5 @@
-<h1><%= @playlist.title%> </h1>
+<h1 class="index"><center><%= @playlist.title%> <center></h1>
+<% unless @playlist.clips == [] %>
   <div class="search_block">
     <% @playlist.clips.each do |c| %>
       <div class="search_result">
@@ -8,3 +9,4 @@
       </div>
     <% end %>
   </div>
+<% end %>
