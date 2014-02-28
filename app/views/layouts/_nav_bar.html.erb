@@ -27,7 +27,7 @@
             <li><a href="#">Likes</a></li>
             <li class="divider"></li>
             <li><%= link_to "Edit Profile", edit_user_path(current_user) %></font></li>
-  
+
           </ul>
         </li>
         <% end %>
@@ -36,11 +36,11 @@
   <a class="navbar-brand" href="/map"><font color="white">Map</font></a>
 
       <%= render "search/search" %>
-      
+
 <% if signed_in? %><div class ="signout">
         <p class="navbar-header navbar-right">
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %></div>
-        </p>          
+        </p>
  <% else %>
         <div class="navbar-header navbar-right">
         <a class="navbar-brand" href="/users/sign_in"><font color="white">Sign In</font></a>
