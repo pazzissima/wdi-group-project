@@ -4,7 +4,9 @@
   <h2>Welcome!</h2>
   <%= image_tag @user.avatar.url(:medium) %><br>
   <%= @user.email %><br>
-  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>
+  <% if current_user == @user %>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %><br>
+  <% end %>
   </div>
 </div></ul>
 <br>

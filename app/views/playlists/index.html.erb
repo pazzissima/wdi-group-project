@@ -1,4 +1,13 @@
-<center><h1><%= current_user.email %>'s playlists</h1></center>
+<div class = index>
+  <center><h1><%= current_user.email %>'s playlists</h1></center>
+</div>
+
+<div class="index">
+    <%= form_for @playlist do |f| %>
+  <%= f.text_field :title, placeholder: "new playlist title", class: "form-control" %>
+  <%= f.submit "create playlist", class: "btn btn-default" %>
+<% end %>
+</div>
 
 <ul class = "search_block playlist_index">
   <% @playlists.each do |p| %>

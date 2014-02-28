@@ -1,6 +1,7 @@
 class PlaylistsController < ApplicationController
   def index
     @playlists = current_user.playlists
+    @playlist = Playlist.new
   end
 
   def new
@@ -11,7 +12,7 @@ class PlaylistsController < ApplicationController
     playlist = current_user.playlists
       .create(params.require(:playlist).permit(:title))
 
-    redirect_to playlist_path(playlist)
+    redirect_to playlists_path
   end
 
   def edit
