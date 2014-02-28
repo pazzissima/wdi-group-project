@@ -1,6 +1,6 @@
 class ClipsController < ApplicationController
 
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :snippet]
   require 'open-uri'
 
   def index
@@ -37,7 +37,7 @@ class ClipsController < ApplicationController
         clip.tags.create(text: tag)
       end
       GeoWorker.perform_async(clip.id, request.remote_ip)
-    
+
       redirect_to clip_path(clip)
     else
       redirect_to clips_path

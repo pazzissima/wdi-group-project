@@ -53,7 +53,7 @@ Tags: <%= @tags %> <br>
   <!-- /like button -->
 </div>
 
-<% unless @clip.snippable_id %>
+<% unless @clip.snippable_id || current_user.nil?%>
   <div class="search_block show">
     <%= render "create_snippet" %>
   </div>
@@ -78,6 +78,6 @@ Tags: <%= @tags %> <br>
   <%= link_to "See all clips", root_path %>
 </div>
 
-<%= javascript_include_tag "playlists" %>
+<%#= javascript_include_tag "playlists" %>
 <%= javascript_include_tag "likes" %>
 <%= javascript_include_tag "snippets" %>
