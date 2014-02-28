@@ -21,7 +21,7 @@
         <% if clip.snippable_id.nil? %>
           <!-- |clip| media and information -->
           <div class="index clip hoverable" >
-            <%= link_to clip.title, clip_path(clip.id) %></br>
+            <h4><%= link_to clip.title, clip_path(clip.id) %></h4>
             <!-- if |clip| is a snippet whose parent clip belongs to another user -->
             <% if clip.snippable_id && Clip.find(clip.snippable_id).user_id != @user.id %>
                 <h4>Original clip: <a href="<%=clip_path(@clip.snippable_id)%>"><%=Clip.find(@clip.snippable_id).title%></a>
@@ -31,10 +31,6 @@
             by: <%= clip.performer %></br>
             <audio id="track" controls src="<%=clip.mp3.url%>"></audio></br>
             <%= clip.description %> </br>
-            <div id="clip<%= clip.id %>" >
-              <button class="like">Like</button><br>
-              Likes: <p><%=clip.likes.count%></p>
-            </div>
           </div>
         <% end %>
 
