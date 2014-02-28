@@ -17,11 +17,11 @@
   </div></ul>
 <% end %>
 
-<center><ul><h3>My Clips:</h3></ul></center>
 <% @user.clips.each do |clip| %>
     <!-- Only display if correct user is logged in or if clip is not private -->
     <% if current_user == @user || clip.is_private? != true %>
       <ol>
+        <div class="index"><center><h3>Clips:</h3></center></div>
 
         <% if clip.snippable_id.nil? %>
           <!-- |clip| media and information -->

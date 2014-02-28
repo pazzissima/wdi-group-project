@@ -12,6 +12,10 @@ body:not(.navbar-header) {
   padding-top: 60px;
 }
 
+.white-link{
+  color: white;
+}
+
 li {
   padding-left: 20px;
 }
