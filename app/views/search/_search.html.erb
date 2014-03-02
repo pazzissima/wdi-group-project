@@ -1,6 +1,6 @@
-<div class="search_form navbar-form navbar-left">
-  <%= form_tag("/search", method: "post") do %>
-    <%= text_field_tag(:search_string, nil, placeholder: "title, content, tags") %>
-    <%= submit_tag "search" %>
+  <div class="form-group">
+  <%= form_tag("/search", method: "post", class: "navbar-form navbar-left", role: "search") do %>
+    <%= text_field_tag(:search_string, nil, placeholder: "title, content, tags", class: "form-control") %>
+    <%= submit_tag "search", class: "btn btn-default" %>
   <%end%>
-</div>
+  </div>
