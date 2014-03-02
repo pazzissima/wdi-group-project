@@ -1,10 +1,8 @@
 body:not(.navbar-header) {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color:black;
-   /*background: url('http://www.wallpaper77.com/upload/DesktopWallpapers/cache/Sound-Vector-abstract-wallpapers-vector-wallpaper-vectors-1920x1200.jpg') no-repeat center center fixed;*/
-   background: url('background.jpg') no-repeat center center fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*background: url('http://www.wallpaper77.com/upload/DesktopWallpapers/cache/Sound-Vector-abstract-wallpapers-vector-wallpaper-vectors-1920x1200.jpg') no-repeat center center fixed;*/
+  background: url('background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -38,7 +36,7 @@ li {
 }
 
 .navbar{
-  background-color: #336699;
+  background-color: #95a5a6;
   color: white;  top: 0;
   z-index: 100;
   position: fixed;
