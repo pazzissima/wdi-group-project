@@ -1,4 +1,4 @@
-$(document).on("ready page:load", function() {
+$(function() {
 
 	Playlist = {
 		// write some function to do add to playlist
@@ -20,7 +20,7 @@ $(document).on("ready page:load", function() {
 		},
 
 		added: function(playlistId){
-			$("#playlist"+playlistId > span).removeClass().addClass("glyphicon glyphicon-ok");
+			$("#playlist"+playlistId + "> span").removeClass().addClass("glyphicon glyphicon-ok");
 		}
 	};
 
